@@ -1,0 +1,44 @@
+
+≡ƒôï Validating environment variables...
+ΓÜá∩╕Å  Using default JWT_SECRET for demo mode
+Γ£à All required environment variables validated
+
+2026-03-11T18:36:39.989Z [32minfo[39m: ≡ƒÜÇ Starting VendorLink Server... {
+  "service": "vendorlink-api"
+}
+ΓÜá∩╕Å  MONGODB_URI missing in .env, using mock database
+Γ£ö Mock database initialized with sample data
+2026-03-11T18:36:39.995Z [33mwarn[39m: ΓÜá∩╕Å  Email credentials not configured - email service disabled {
+  "service": "vendorlink-api"
+}
+2026-03-11T18:36:39.996Z [32minfo[39m: Γ£à Core services initialized {
+  "service": "vendorlink-api"
+}
+Γ£ö Socket.IO handlers initialized
+Γ£ö Notifications system initialized
+(node:9548) [MONGOOSE] Warning: Duplicate schema index on {"transactionId":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:9548) [MONGOOSE] Warning: Duplicate schema index on {"razorpayOrderId":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+2026-03-11T18:36:40.111Z [32minfo[39m: 
+ΓòöΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòù {
+  "service": "vendorlink-api"
+}
+2026-03-11T18:36:40.111Z [32minfo[39m: Γòæ  Γ£ö VendorLink Server Running           Γòæ {
+  "service": "vendorlink-api"
+}
+2026-03-11T18:36:40.111Z [32minfo[39m: Γòæ  Port: 3000                              Γòæ {
+  "service": "vendorlink-api"
+}
+2026-03-11T18:36:40.111Z [32minfo[39m: Γòæ  Socket.IO: Enabled                    Γòæ {
+  "service": "vendorlink-api"
+}
+2026-03-11T18:36:40.111Z [32minfo[39m: Γòæ  Notifications: Active                 Γòæ {
+  "service": "vendorlink-api"
+}
+2026-03-11T18:36:40.111Z [32minfo[39m: Γòæ  API Docs: http://localhost:3000/api-docs   Γòæ {
+  "service": "vendorlink-api"
+}
+2026-03-11T18:36:40.112Z [32minfo[39m: ΓòÜΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓò¥
+ {
+  "service": "vendorlink-api"
+}

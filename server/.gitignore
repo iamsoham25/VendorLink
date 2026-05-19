@@ -1,0 +1,22 @@
+# Environment variables
+.env
+
+# Node modules
+node_modules/
+
+# Logs
+logs/
+*.log
+
+# VS Code
+.vscode/
+
+# Tests
+__tests__/
+
+# Temporary files
+tmp_vendor_test.js
+
+# Build folders
+dist/
+build/

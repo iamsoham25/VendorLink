@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-gray-100 dark:bg-gray-900">
+<head>
+  <meta charset="UTF-8">
+  <title>Order Confirmation • VendorLink</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { darkMode: "class" };
+  </script>
+
+</head>
+
+<body class="text-gray-900 dark:text-gray-100">
+
+<!-- Navbar -->
+<script type="module" src="assets/js/navbar.js"></script>
+
+<section class="max-w-4xl mx-auto px-4 py-10">
+
+  <!-- Success Header -->
+  <div class="text-center mb-8">
+    <div class="inline-flex items-center justify-center w-20 h-20 bg-green-100 rounded-full mb-4">
+      <svg class="w-10 h-10 text-green-600" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+      </svg>
+    </div>
+    <h1 class="text-3xl font-bold text-green-600 mb-2">🎉 Order Placed Successfully!</h1>
+    <p class="text-gray-600">Thank you for your order. We'll deliver it to you soon.</p>
+  </div>
+
+  <!-- Order Details Card -->
+  <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 mb-6">
+    <div class="flex items-center justify-between mb-6">
+      <h2 class="text-xl font-semibold">Order Details</h2>
+      <span id="orderStatus" class="px-3 py-1 bg-blue-100 text-blue-700 rounded-lg text-sm font-semibold">
+        Placed
+      </span>
+    </div>
+
+    <!-- Order ID and Date -->
+    <div class="grid md:grid-cols-2 gap-4 mb-6">
+      <div>
+        <div class="text-sm text-gray-500">Order ID</div>
+        <div class="font-semibold text-lg" id="orderId">-</div>
+      </div>
+      <div>
+        <div class="text-sm text-gray-500">Order Date</div>
+        <div class="font-semibold" id="orderDate">-</div>
+      </div>
+    </div>
+
+    <!-- Order Items -->
+    <div class="mb-6">
+      <h3 class="font-semibold mb-3">Order Items</h3>
+      <div id="orderItems" class="space-y-3">
+        <!-- Items will be loaded here -->
+      </div>
+    </div>
+
+    <!-- Delivery Address -->
+    <div class="mb-6">
+      <h3 class="font-semibold mb-3">📍 Delivery Address</h3>
+      <div id="deliveryAddress" class="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg">
+        <!-- Address will be loaded here -->
+      </div>
+    </div>
+
+    <!-- Payment Information -->
+    <div class="mb-6">
+      <h3 class="font-semibold mb-3">💳 Payment Information</h3>
+      <div class="grid md:grid-cols-2 gap-4">
+        <div>
+          <div class="text-sm text-gray-500">Payment Method</div>
+          <div class="font-semibold" id="paymentMethod">-</div>
+        </div>
+        <div>
+          <div class="text-sm text-gray-500">Payment Status</div>
+          <div class="font-semibold" id="paymentStatus">-</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Order Total -->
+    <div class="border-t pt-4">
+      <div class="flex justify-between items-center text-lg font-bold">
+        <span>Total Amount:</span>
+        <span class="text-amber-600">₹<span id="totalAmount">0</span></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Estimated Delivery -->
+  <div class="bg-amber-50 dark:bg-amber-900/20 rounded-xl p-6 mb-6">
+    <div class="flex items-center">
+      <svg class="w-8 h-8 text-amber-600 mr-3" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+      </svg>
+      <div>
+        <div class="font-semibold text-amber-800 dark:text-amber-200">Estimated Delivery</div>
+        <div class="text-amber-700 dark:text-amber-300" id="estimatedDelivery">3-5 Business Days</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Action Buttons -->
+  <div class="grid md:grid-cols-2 gap-4">
+    <button onclick="window.location.href='marketplace.html'"
+            class="bg-amber-600 hover:bg-amber-700 text-white py-3 rounded-xl font-semibold">
+      🛒 Continue Shopping
+    </button>
+    
+    <button onclick="window.location.href='orders.html'"
+            class="bg-gray-200 hover:bg-gray-300 text-gray-800 py-3 rounded-xl font-semibold">
+      📋 View My Orders
+    </button>
+  </div>
+
+  <!-- Order Tracking Info -->
+  <div class="mt-8 text-center text-sm text-gray-500">
+    <p>You'll receive order updates on your registered email and phone number.</p>
+    <p class="mt-2">For any queries, contact our customer support: support@vendorlink.com</p>
+  </div>
+
+</section>
+
+<script type="module" src="assets/js/order_confirmation.js"></script>
+
+</body>
+</html>

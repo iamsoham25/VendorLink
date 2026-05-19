@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-gray-50">
+<head>
+  <meta charset="UTF-8">
+  <title>Vendor Marketplace - Find Suppliers | VendorLink</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    @keyframes slide-up {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    
+    .slide-up {
+      animation: slide-up 0.6s ease-out;
+    }
+    
+    .supplier-card {
+      transition: all 0.3s ease;
+    }
+    
+    .supplier-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    }
+    
+    .filter-chip {
+      transition: all 0.2s ease;
+    }
+    
+    .filter-chip:hover {
+      transform: scale(1.05);
+    }
+    
+    .filter-chip.active {
+      background: linear-gradient(135deg, #3b82f6, #2563eb);
+      color: white;
+    }
+  </style>
+</head>
+
+<body class="text-gray-900">
+  
+  <!-- Header -->
+  <header class="bg-white shadow-sm border-b">
+    <div class="max-w-7xl mx-auto px-4 py-4">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center space-x-4">
+          <h1 class="text-2xl font-bold text-blue-600">
+            <i class="fas fa-search mr-2"></i>Supplier Discovery
+          </h1>
+          <span class="text-sm text-gray-500">Find reliable suppliers for your needs</span>
+        </div>
+        
+        <div class="flex items-center space-x-2">
+          <button onclick="showPostRequirementModal()" class="px-3 py-1.5 text-sm bg-green-600 text-white rounded-lg shadow-sm hover:bg-green-700 transition duration-200 flex items-center">
+            <i class="fas fa-plus mr-1.5"></i>Post Requirement
+          </button>
+          <button onclick="showVendorProposals()" class="px-3 py-1.5 text-sm bg-blue-600 text-white rounded-lg shadow-sm hover:bg-blue-700 transition duration-200 flex items-center">
+            <i class="fas fa-paper-plane mr-1.5"></i>Supplier Proposals
+          </button>
+          <button onclick="showSavedSuppliers()" class="px-3 py-1.5 text-sm bg-white text-gray-800 border border-blue-200 rounded-lg shadow-sm hover:bg-blue-50 transition duration-200 flex items-center">
+            <i class="fas fa-heart text-red-500 mr-1.5"></i>Saved Suppliers
+            <span id="savedCount" class="ml-2 bg-blue-600 text-white px-2 py-0.5 rounded-full text-[10px]">0</span>
+          </button>
+          <button onclick="showMyRFQs()" class="px-3 py-1.5 text-sm bg-white text-gray-800 border border-blue-200 rounded-lg shadow-sm hover:bg-blue-50 transition duration-200 flex items-center">
+            <i class="fas fa-file-alt text-blue-600 mr-1.5"></i>My RFQs
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-4 py-6">
+    
+    <!-- Search section only for vendor side -->
+    <section class="bg-white rounded-xl shadow-sm p-6 mb-6 slide-up">
+      <div class="grid md:grid-cols-1 gap-4 mb-4">
+        <div>
+          <div class="relative">
+            <i class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+            <input type="text" id="searchInput" placeholder="Search suppliers by name, material, or location..." 
+                   class="w-full pl-10 pr-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Results Header -->
+    <section class="flex items-center justify-between mb-4">
+      <div>
+        <h2 class="text-xl font-semibold">Found <span id="supplierCount">12</span> Suppliers</h2>
+        <p class="text-sm text-gray-600">Matching your criteria</p>
+      </div>
+    </section>
+
+    <!-- Suppliers Grid -->
+    <section id="suppliersGrid" class="grid md:grid-cols-3 gap-6"></section>
+            <span class="px-2 py-1 bg-gray-50 text-gray-700 rounded text-xs">Portland Cement</span>
+            <span class="px-2 py-1 bg-gray-50 text-gray-700 rounded text-xs">White Cement</span>
+            <span class="px-2 py-1 bg-gray-50 text-gray-700 rounded text-xs">Ready Mix</span>
+          </div>
+        </div>
+        
+        <div class="grid grid-cols-2 gap-2 mb-4 text-sm">
+          <div>
+            <span class="text-gray-500">Capacity:</span>
+            <span class="font-medium">500 tons/month</span>
+          </div>
+          <div>
+            <span class="text-gray-500">Lead Time:</span>
+            <span class="font-medium">3-5 days</span>
+          </div>
+        </div>
+        
+        <div class="flex space-x-2">
+          <button onclick="viewSupplierProfile('supplier_2')" 
+                  class="flex-1 px-3 py-2 border border-blue-600 text-blue-600 rounded-lg hover:bg-blue-50 transition text-sm">
+            <i class="fas fa-eye mr-1"></i>View Profile
+          </button>
+          <button onclick="sendRFQ('supplier_2')" 
+                  class="flex-1 px-3 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition text-sm">
+            <i class="fas fa-file-alt mr-1"></i>Send RFQ
+          </button>
+        </div>
+      </div>
+
+      <!-- Supplier Card 3 -->
+      <div class="supplier-card bg-white rounded-xl shadow-sm p-6 slide-up" style="animation-delay: 0.3s;">
+        <div class="flex items-start justify-between mb-4">
+          <img src="https://cdn-icons-png.flaticon.com/512/3081/3081559.png" class="w-16 h-16 rounded-lg">
+          <div class="flex items-center space-x-2">
+            <button onclick="toggleSaveSupplier(this)" class="text-gray-400 hover:text-red-500 transition">
+              <i class="far fa-heart"></i>
+            </button>
+          </div>
+        </div>
+        
+        <h3 class="font-semibold text-lg mb-1">Chemical Solutions</h3>
+        <p class="text-sm text-gray-600 mb-3">Manufacturer • Chennai, Tamil Nadu</p>
+        
+        <div class="flex items-center mb-3">
+          <div class="flex text-yellow-400">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="far fa-star"></i>
+          </div>
+          <span class="ml-2 text-sm text-gray-600">4.0 (56 reviews)</span>
+        </div>
+        
+        <div class="mb-4">
+          <p class="text-sm font-medium text-gray-700 mb-2">Materials:</p>
+          <div class="flex flex-wrap gap-1">
+            <span class="px-2 py-1 bg-purple-50 text-purple-700 rounded text-xs">Industrial Chemicals</span>
+            <span class="px-2 py-1 bg-purple-50 text-purple-700 rounded text-xs">Solvents</span>
+            <span class="px-2 py-1 bg-purple-50 text-purple-700 rounded text-xs">Acids</span>
+          </div>
+        </div>
+        
+        <div class="grid grid-cols-2 gap-2 mb-4 text-sm">
+          <div>
+            <span class="text-gray-500">Capacity:</span>
+            <span class="font-medium">200 tons/month</span>
+          </div>
+          <div>
+            <span class="text-gray-500">Lead Time:</span>
+            <span class="font-medium">14-21 days</span>
+          </div>
+        </div>
+        
+        <div class="flex space-x-2">
+          <button onclick="viewSupplierProfile('supplier_3')" 
+                  class="flex-1 px-3 py-2 border border-blue-600 text-blue-600 rounded-lg hover:bg-blue-50 transition text-sm">
+            <i class="fas fa-eye mr-1"></i>View Profile
+          </button>
+          <button onclick="sendRFQ('supplier_3')" 
+                  class="flex-1 px-3 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition text-sm">
+            <i class="fas fa-file-alt mr-1"></i>Send RFQ
+          </button>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Compare Section -->
+    <section id="compareSection" class="hidden bg-white rounded-xl shadow-sm p-6 mt-6">
+      <h3 class="font-semibold text-lg mb-4">
+        <i class="fas fa-balance-scale mr-2"></i>Compare Suppliers 
+        <span id="compareCount" class="text-sm text-gray-600">(0 selected)</span>
+      </h3>
+      <div id="compareList" class="space-y-2"></div>
+      <button onclick="compareSuppliers()" class="mt-4 px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
+        Compare Selected
+      </button>
+    </section>
+
+  </main>
+
+  <!-- Saved Suppliers Modal -->
+  <div id="savedSuppliersModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center">
+    <div class="bg-white rounded-xl p-6 max-w-lg w-full mx-4">
+      <div class="flex items-center justify-between mb-4">
+        <h3 class="text-lg font-semibold">Saved Suppliers</h3>
+        <button onclick="closeSavedSuppliersModal()" class="text-gray-500 hover:text-gray-800"><i class="fas fa-times"></i></button>
+      </div>
+      <div id="savedSuppliersList" class="space-y-3">
+        <p class="text-sm text-gray-500">Loading your saved suppliers...</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- My RFQs Modal -->
+  <div id="myRFQsModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center">
+    <div class="bg-white rounded-xl p-6 max-w-lg w-full mx-4">
+      <div class="flex items-center justify-between mb-4">
+        <h3 class="text-lg font-semibold">My RFQs</h3>
+        <button onclick="closeMyRFQsModal()" class="text-gray-500 hover:text-gray-800"><i class="fas fa-times"></i></button>
+      </div>
+      <div id="myRFQsList" class="space-y-3">
+        <p class="text-sm text-gray-500">Loading your RFQs...</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- RFQ Modal -->
+  <div id="rfqModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center">
+    <div class="bg-white rounded-xl p-6 max-w-md w-full mx-4">
+      <h3 class="text-lg font-semibold mb-4">Send Request for Quotation</h3>
+      <form onsubmit="submitRFQ(event)">
+        <div class="space-y-4">
+          <div>
+            <label class="block text-sm font-medium mb-1">Material Required</label>
+            <input type="text" required class="w-full px-3 py-2 border rounded-lg">
+          </div>
+          <div>
+            <label class="block text-sm font-medium mb-1">Quantity</label>
+            <input type="text" required class="w-full px-3 py-2 border rounded-lg">
+          </div>
+          <div>
+            <label class="block text-sm font-medium mb-1">Required By</label>
+            <input type="date" required class="w-full px-3 py-2 border rounded-lg">
+          </div>
+          <div>
+            <label class="block text-sm font-medium mb-1">Additional Details</label>
+            <textarea rows="3" class="w-full px-3 py-2 border rounded-lg"></textarea>
+          </div>
+        </div>
+        <div class="flex space-x-3 mt-6">
+          <button type="button" onclick="closeRFQModal()" class="flex-1 px-4 py-2 border rounded-lg hover:bg-gray-50">
+            Cancel
+          </button>
+          <button type="submit" class="flex-1 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
+            Send RFQ
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Post Requirement Modal -->
+  <div id="requirementModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center">
+    <div class="bg-white rounded-xl p-6 max-w-lg w-full mx-4 max-h-[90vh] overflow-y-auto">
+      <h3 class="text-lg font-semibold mb-4">Post New Requirement</h3>
+      <form onsubmit="submitRequirement(event)">
+        <div class="space-y-4">
+          <div>
+            <label class="block text-sm font-medium mb-1">Requirement Title</label>
+            <input type="text" id="reqTitle" placeholder="e.g., Fresh Potatoes for Burger Chain" required class="w-full px-3 py-2 border rounded-lg">
+          </div>
+          <div>
+            <label class="block text-sm font-medium mb-1">Material Needed</label>
+            <select id="reqMaterial" required class="w-full px-3 py-2 border rounded-lg">
+              <option value="">Select Material</option>
+              <option value="Fresh Potatoes">Fresh Potatoes</option>
+              <option value="Tomatoes">Tomatoes</option>
+              <option value="Onions">Onions</option>
+              <option value="Lettuce">Lettuce</option>
+              <option value="Cheese">Cheese</option>
+              <option value="Burger Buns">Burger Buns</option>
+              <option value="Chicken Patties">Chicken Patties</option>
+              <option value="Sauces">Sauces</option>
+              <option value="Packaging">Packaging</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label class="block text-sm font-medium mb-1">Quantity</label>
+              <input type="text" id="reqQuantity" placeholder="e.g., 500 kg" required class="w-full px-3 py-2 border rounded-lg">
+            </div>
+            <div>
+              <label class="block text-sm font-medium mb-1">Budget (₹)</label>
+              <input type="number" id="reqBudget" placeholder="0" required class="w-full px-3 py-2 border rounded-lg">
+            </div>
+          </div>
+          <div>
+            <label class="block text-sm font-medium mb-1">Required By Date</label>
+            <input type="date" id="reqDate" required class="w-full px-3 py-2 border rounded-lg">
+          </div>
+          <div>
+            <label class="block text-sm font-medium mb-1">Urgency Level</label>
+            <select id="reqUrgency" required class="w-full px-3 py-2 border rounded-lg">
+              <option value="low">Low - Within 2 weeks</option>
+              <option value="normal">Normal - Within 1 week</option>
+              <option value="high">High - Within 3 days</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-sm font-medium mb-1">Description</label>
+            <textarea id="reqDescription" rows="3" placeholder="Describe your requirements in detail..." required class="w-full px-3 py-2 border rounded-lg"></textarea>
+          </div>
+          <div>
+            <label class="block text-sm font-medium mb-1">Additional Requirements (Optional)</label>
+            <textarea id="reqList" rows="2" placeholder="List specific requirements, certifications needed, etc." class="w-full px-3 py-2 border rounded-lg"></textarea>
+          </div>
+        </div>
+        <div class="flex space-x-3 mt-6">
+          <button type="button" onclick="closeRequirementModal()" class="flex-1 px-4 py-2 border rounded-lg hover:bg-gray-50">
+            Cancel
+          </button>
+          <button type="submit" class="flex-1 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700">
+            Post Requirement
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Vendor Proposals Modal -->
+  <div id="vendorProposalsModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center overflow-y-auto">
+    <div class="bg-white rounded-xl p-6 max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+      <div class="flex items-center justify-between mb-5">
+        <h3 class="text-xl font-semibold">Proposals Received</h3>
+        <button onclick="closeVendorProposalsModal()" class="text-gray-500 hover:text-gray-700 text-2xl">✕</button>
+      </div>
+      <div id="vendorProposalsList" class="space-y-4">Loading proposals...</div>
+    </div>
+  </div>
+
+  <script type="module" src="assets/js/navbar.js"></script>
+  <script src="assets/js/vendor-marketplace.js"></script>
+  
+</body>
+</html>

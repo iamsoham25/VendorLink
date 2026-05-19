@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Profile • VendorLink</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .cover-bg {
+      background: linear-gradient(135deg, #1a1a2e 0%, #0f3460 60%, #533483 100%);
+    }
+    .avatar-ring {
+      box-shadow: 0 0 0 4px white, 0 0 0 8px rgba(249, 115, 22, 0.35);
+    }
+    .info-card {
+      transition: box-shadow 0.25s ease;
+    }
+    .info-card:hover {
+      box-shadow: 0 12px 40px rgba(15, 23, 42, 0.08);
+    }
+  </style>
+</head>
+
+<body class="bg-gray-100 text-gray-900">
+
+  <!-- Navbar -->
+  <script type="module" src="assets/js/navbar.js"></script>
+
+  <main class="max-w-5xl mx-auto px-4 py-10">
+
+    <div class="bg-white rounded-3xl shadow-xl overflow-hidden mb-6">
+      <div class="cover-bg h-36 relative">
+        <div class="absolute inset-0 opacity-20"
+             style="background-image: radial-gradient(circle at 20% 50%, #fb923c 0%, transparent 50%), radial-gradient(circle at 80% 20%, #3b82f6 0%, transparent 50%);"></div>
+      </div>
+
+      <div class="px-8 pb-6">
+        <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between -mt-14 mb-4 gap-4">
+          <div class="flex items-center gap-4">
+            <div id="avatarWrapper" class="relative w-28 h-28 rounded-full bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center avatar-ring overflow-hidden shrink-0">
+              <img id="avatarImage" class="w-full h-full object-cover hidden" alt="Profile photo">
+              <span id="avatarInitial" class="text-white text-5xl font-extrabold">?</span>
+            </div>
+            <button id="editPhotoBtn" type="button" class="absolute bottom-0 right-0 w-10 h-10 rounded-full bg-white text-orange-600 border border-gray-200 shadow flex items-center justify-center hover:bg-orange-50 transition-all">
+              <i class="fas fa-camera"></i>
+            </button>
+          </div>
+
+          <button id="editBtn" type="button"
+                  class="self-start sm:self-auto px-5 py-2 border-2 border-orange-500 text-orange-600 font-semibold rounded-xl hover:bg-orange-50 transition-all text-sm flex items-center gap-2">
+            <i class="fas fa-pen"></i> Edit Profile
+          </button>
+        </div>
+
+        <h1 id="prof-name" class="text-3xl font-extrabold text-gray-900 leading-tight">—</h1>
+        <div class="flex flex-wrap items-center gap-3 mt-2">
+          <span id="prof-role-badge" class="text-xs font-bold px-3 py-1 rounded-full bg-orange-100 text-orange-700">—</span>
+          <span id="prof-email" class="text-sm text-gray-500 flex items-center gap-2">
+            <i class="fas fa-envelope text-gray-400"></i> —
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+      <div class="bg-gradient-to-br from-orange-50 to-orange-100 rounded-3xl p-5 text-center shadow-sm info-card">
+        <div class="text-3xl font-extrabold text-orange-500" id="stat-orders">—</div>
+        <div class="text-xs text-gray-500 mt-1 font-medium">Orders</div>
+      </div>
+      <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-3xl p-5 text-center shadow-sm info-card">
+        <div class="text-3xl font-extrabold text-blue-500" id="stat-spent">—</div>
+        <div class="text-xs text-gray-500 mt-1 font-medium">Total Spent</div>
+      </div>
+      <div class="bg-gradient-to-br from-green-50 to-green-100 rounded-3xl p-5 text-center shadow-sm info-card">
+        <div class="text-3xl font-extrabold text-green-500" id="stat-saved">—</div>
+        <div class="text-xs text-gray-500 mt-1 font-medium">Saved Items</div>
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-6 mb-6">
+      <div class="bg-white rounded-3xl shadow-sm p-6 info-card">
+        <h2 class="font-bold text-gray-700 mb-4 flex items-center gap-3"><i class="fas fa-user-circle text-orange-500"></i> Account Details</h2>
+        <div class="space-y-4">
+          <div class="grid gap-2 md:grid-cols-[auto_1fr] items-center">
+            <div class="text-xs text-gray-400">Full Name</div>
+            <div id="detail-name" class="font-semibold text-sm text-gray-800">—</div>
+          </div>
+          <div class="grid gap-2 md:grid-cols-[auto_1fr] items-center">
+            <div class="text-xs text-gray-400">Email Address</div>
+            <div id="detail-email" class="font-semibold text-sm text-gray-800">—</div>
+          </div>
+          <div class="grid gap-2 md:grid-cols-[auto_1fr] items-center">
+            <div class="text-xs text-gray-400">Role</div>
+            <div id="detail-role" class="font-semibold text-sm text-gray-800 capitalize">—</div>
+          </div>
+          <div class="grid gap-2 md:grid-cols-[auto_1fr] items-center">
+            <div class="text-xs text-gray-400">Location</div>
+            <div id="detail-location" class="font-semibold text-sm text-gray-800">—</div>
+          </div>
+          <div class="grid gap-2 md:grid-cols-[auto_1fr] items-center">
+            <div class="text-xs text-gray-400">Contact Number</div>
+            <div id="detail-contact" class="font-semibold text-sm text-gray-800">—</div>
+          </div>
+          <div class="grid gap-2 md:grid-cols-[auto_1fr] items-center">
+            <div class="text-xs text-gray-400">Shop / Business Name</div>
+            <div id="detail-shop" class="font-semibold text-sm text-gray-800">—</div>
+          </div>
+          <div class="grid gap-2 md:grid-cols-[auto_1fr] items-center">
+            <div class="text-xs text-gray-400">Member Since</div>
+            <div id="detail-joined" class="font-semibold text-sm text-gray-800">—</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-3xl shadow-sm p-6 info-card">
+        <h2 class="font-bold text-gray-700 mb-4 flex items-center gap-3"><i class="fas fa-bolt text-orange-500"></i> Quick Actions</h2>
+        <div class="space-y-3">
+          <a href="marketplace.html" class="flex items-center gap-3 p-3 rounded-2xl hover:bg-orange-50 transition-all">
+            <div class="w-10 h-10 rounded-2xl bg-orange-100 flex items-center justify-center"><i class="fas fa-store text-orange-500 text-sm"></i></div>
+            <span class="font-medium text-sm text-gray-700">Browse Marketplace</span>
+            <i class="fas fa-chevron-right text-gray-300 ml-auto text-xs"></i>
+          </a>
+          <a href="orders.html" class="flex items-center gap-3 p-3 rounded-2xl hover:bg-blue-50 transition-all">
+            <div class="w-10 h-10 rounded-2xl bg-blue-100 flex items-center justify-center"><i class="fas fa-box text-blue-500 text-sm"></i></div>
+            <span class="font-medium text-sm text-gray-700">My Orders</span>
+            <i class="fas fa-chevron-right text-gray-300 ml-auto text-xs"></i>
+          </a>
+          <a href="cart.html" class="flex items-center gap-3 p-3 rounded-2xl hover:bg-green-50 transition-all">
+            <div class="w-10 h-10 rounded-2xl bg-green-100 flex items-center justify-center"><i class="fas fa-shopping-cart text-green-500 text-sm"></i></div>
+            <span class="font-medium text-sm text-gray-700">View Cart</span>
+            <i class="fas fa-chevron-right text-gray-300 ml-auto text-xs"></i>
+          </a>
+          <a href="community.html" class="flex items-center gap-3 p-3 rounded-2xl hover:bg-purple-50 transition-all">
+            <div class="w-10 h-10 rounded-2xl bg-purple-100 flex items-center justify-center"><i class="fas fa-users text-purple-500 text-sm"></i></div>
+            <span class="font-medium text-sm text-gray-700">Community Hub</span>
+            <i class="fas fa-chevron-right text-gray-300 ml-auto text-xs"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-3xl shadow-sm p-6 info-card border border-red-100">
+      <h2 class="font-bold text-red-500 mb-4 flex items-center gap-3"><i class="fas fa-exclamation-triangle"></i> Account</h2>
+      <div class="flex flex-col sm:flex-row gap-3">
+        <button onclick="handleLogout()" class="flex items-center gap-2 px-5 py-2.5 bg-red-500 hover:bg-red-600 text-white font-semibold rounded-xl transition-all text-sm">
+          <i class="fas fa-sign-out-alt"></i> Logout
+        </button>
+      </div>
+    </div>
+  </main>
+
+  <div id="editProfileModal" class="hidden fixed inset-0 bg-black/40 z-50 p-4 flex items-center justify-center overflow-y-auto">
+    <div class="bg-white rounded-3xl shadow-2xl w-full max-w-2xl overflow-hidden my-8">
+      <div class="sticky top-0 flex items-center justify-between px-6 py-5 border-b border-gray-100 bg-white z-10">
+        <div>
+          <h2 class="text-xl font-bold text-gray-900">Edit Profile</h2>
+          <p class="text-sm text-gray-500">Update your profile information and avatar.</p>
+        </div>
+        <button id="closeEditProfileBtn" class="text-gray-500 hover:text-gray-900 text-xl"><i class="fas fa-times"></i></button>
+      </div>
+      <form id="profileForm" class="space-y-6 px-6 py-6 overflow-y-auto max-h-[calc(100vh-180px)]">
+        <div class="grid gap-4 sm:grid-cols-[140px_1fr] items-start">
+          <label class="text-sm font-semibold text-gray-700">Photo</label>
+          <div class="space-y-3">
+            <div class="w-28 h-28 rounded-full bg-orange-100 overflow-hidden border border-gray-200 flex items-center justify-center">
+              <img id="profileImagePreview" class="w-full h-full object-cover hidden" alt="Profile preview">
+              <span id="profilePreviewInitial" class="text-orange-600 text-4xl font-extrabold">?</span>
+            </div>
+            <label class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-gray-200 text-sm font-medium text-gray-700 bg-gray-50 cursor-pointer hover:bg-gray-100">
+              <i class="fas fa-upload text-orange-500"></i>
+              <span>Upload Photo</span>
+              <input id="profileImageInput" type="file" accept="image/*" class="hidden">
+            </label>
+            <p class="text-xs text-gray-500">JPG, PNG or WEBP. Max size 2MB.</p>
+          </div>
+        </div>
+
+        <div class="grid gap-4 sm:grid-cols-2">
+          <div>
+            <label class="text-sm font-semibold text-gray-700">Full Name</label>
+            <input id="profileName" type="text" class="mt-2 w-full rounded-2xl border border-gray-200 px-4 py-3 focus:border-orange-400 focus:ring-orange-200 focus:ring-2 outline-none" placeholder="Your full name">
+          </div>
+          <div>
+            <label class="text-sm font-semibold text-gray-700">Email</label>
+            <input id="profileEmail" type="email" class="mt-2 w-full rounded-2xl border border-gray-200 px-4 py-3 focus:border-orange-400 focus:ring-orange-200 focus:ring-2 outline-none" placeholder="you@example.com">
+          </div>
+        </div>
+
+        <div class="grid gap-4 sm:grid-cols-2">
+          <div>
+            <label class="text-sm font-semibold text-gray-700">Shop / Business Name</label>
+            <input id="profileShop" type="text" class="mt-2 w-full rounded-2xl border border-gray-200 px-4 py-3 focus:border-orange-400 focus:ring-orange-200 focus:ring-2 outline-none" placeholder="Optional">
+          </div>
+          <div>
+            <label class="text-sm font-semibold text-gray-700">Contact Number</label>
+            <input id="profileContact" type="tel" class="mt-2 w-full rounded-2xl border border-gray-200 px-4 py-3 focus:border-orange-400 focus:ring-orange-200 focus:ring-2 outline-none" placeholder="+91 98765 43210">
+          </div>
+        </div>
+
+        <div>
+          <label class="text-sm font-semibold text-gray-700">Location</label>
+          <input id="profileLocation" type="text" class="mt-2 w-full rounded-2xl border border-gray-200 px-4 py-3 focus:border-orange-400 focus:ring-orange-200 focus:ring-2 outline-none" placeholder="City or area">
+        </div>
+
+        <div id="profileFormError" class="hidden rounded-2xl bg-red-50 border border-red-200 text-red-700 px-4 py-3 text-sm"></div>
+        <div id="profileFormSuccess" class="hidden rounded-2xl bg-green-50 border border-green-200 text-green-700 px-4 py-3 text-sm"></div>
+
+        <div class="flex flex-col sm:flex-row gap-3 justify-end">
+          <button type="button" id="cancelEditProfileBtn" class="w-full sm:w-auto px-5 py-3 rounded-2xl border border-gray-200 text-gray-700 hover:bg-gray-50 transition-all">Cancel</button>
+          <button type="submit" class="w-full sm:w-auto px-5 py-3 rounded-2xl bg-orange-500 text-white font-semibold hover:bg-orange-600 transition-all">Save Changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script type="module" src="assets/js/profile.js"></script>
+
+</body>
+</html>

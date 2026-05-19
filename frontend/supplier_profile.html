@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-gray-100 dark:bg-gray-900">
+<head>
+  <meta charset="UTF-8" />
+  <title>Supplier Profile • VendorLink</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { darkMode: "class" };
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="text-gray-900 dark:text-gray-100">
+
+<!-- NAVBAR -->
+<script type="module" src="assets/js/navbar.js"></script>
+
+<section class="max-w-6xl mx-auto px-6 py-10">
+
+  <div id="supplierCard" class="bg-white dark:bg-gray-800 rounded-xl shadow p-6 mb-10 hidden">
+    
+    <div class="flex flex-col md:flex-row items-center md:items-start gap-6">
+      
+      <img id="supplierImage"
+           class="w-32 h-32 rounded-full object-cover shadow"
+           src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
+      />
+
+      <div>
+        <h1 id="supplierName" class="text-3xl font-bold text-amber-600"></h1>
+        <p id="supplierEmail" class="text-sm text-gray-500"></p>
+        <p id="supplierLocation" class="text-sm text-gray-500"></p>
+
+        <p id="supplierDescription" class="mt-4 text-gray-700 dark:text-gray-300"></p>
+
+        <div class="mt-4">
+          <span id="supplierRating"
+                class="px-3 py-1 bg-yellow-100 text-yellow-700 text-sm rounded-lg">
+          </span>
+        </div>
+
+        <button id="contactBtn"
+                class="mt-6 bg-amber-600 text-white px-6 py-2 rounded-lg hover:bg-amber-700">
+          Contact Supplier
+        </button>
+
+      </div>
+    </div>
+  </div>
+
+  <h2 class="text-2xl font-bold mb-4 text-amber-600">Products by this Supplier</h2>
+
+  <div id="productList" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+
+</section>
+
+<!-- CONTACT POPUP -->
+<div id="contactModal"
+     class="hidden fixed inset-0 bg-black/50 flex items-center justify-center">
+  <div class="bg-white dark:bg-gray-800 rounded-xl p-6 w-96">
+
+    <h2 class="text-xl font-bold mb-4 text-amber-600">Contact Supplier</h2>
+
+    <p id="modalName" class="font-semibold"></p>
+    <p id="modalPhone" class="text-gray-600 dark:text-gray-300 mt-1"></p>
+
+    <button onclick="closeModal()"
+            class="mt-6 w-full bg-amber-600 text-white py-2 rounded-lg hover:bg-amber-700">
+      Close
+    </button>
+  </div>
+</div>
+
+<script type="module" src="assets/js/supplier_profile.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VendorLink - Home</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50%       { transform: translateY(-10px); }
+    }
+    .fade-in-up { animation: fadeInUp 0.7s ease forwards; }
+    .delay-1    { animation-delay: 0.15s; opacity: 0; }
+    .delay-2    { animation-delay: 0.3s;  opacity: 0; }
+    .delay-3    { animation-delay: 0.45s; opacity: 0; }
+    .float-anim { animation: float 4s ease-in-out infinite; }
+
+    .hero-bg {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 40%, #0f3460 100%);
+    }
+    .gradient-text {
+      background: linear-gradient(135deg, #fb923c, #f97316, #ea580c);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .card-hover {
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .card-hover:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+    }
+    .stat-card {
+      background: rgba(255,255,255,0.07);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+  </style>
+</head>
+
+<body class="bg-gray-50 text-gray-900">
+
+  <!-- Navbar -->
+  <script type="module" src="assets/js/navbar.js"></script>
+
+  <!-- ═══════════════════════════════════════════════ HERO BANNER -->
+  <section class="hero-bg relative overflow-hidden min-h-[88vh] flex items-center">
+
+    <!-- Background blobs -->
+    <div class="absolute top-[-80px] left-[-80px] w-96 h-96 bg-orange-500 opacity-10 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-[-60px] right-[-60px] w-80 h-80 bg-blue-500 opacity-10 rounded-full blur-3xl"></div>
+
+    <div class="max-w-7xl mx-auto px-6 py-20 w-full grid md:grid-cols-2 gap-12 items-center">
+
+      <!-- Left: Text -->
+      <div>
+        <!-- Welcome pill → clicks to profile -->
+        <a href="profile.html" id="welcomePill"
+           class="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 border border-white/20 hover:border-orange-400/50 text-white text-sm px-4 py-2 rounded-full mb-6 fade-in-up transition-all cursor-pointer group">
+          <span id="avatarChip"
+                class="w-7 h-7 rounded-full bg-orange-500 flex items-center justify-center text-xs font-extrabold text-white shrink-0 group-hover:scale-110 transition-transform">
+            ?
+          </span>
+          <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+          Welcome back, <span id="heroUserName" class="font-semibold text-orange-300">User</span>!
+          <span id="heroRoleBadge" class="ml-1 px-2 py-0.5 rounded-full text-xs font-bold"></span>
+          <i class="fas fa-chevron-right text-white/40 text-xs group-hover:text-orange-400 transition-colors"></i>
+        </a>
+
+        <h1 class="text-5xl md:text-6xl font-extrabold text-white leading-tight mb-5 fade-in-up delay-1">
+          Your B2B Food<br>
+          <span class="gradient-text">Marketplace</span>
+        </h1>
+
+        <p class="text-gray-300 text-lg mb-8 leading-relaxed fade-in-up delay-2">
+          Connect with verified suppliers, source fresh raw materials, and grow your food business — all in one place.
+        </p>
+
+        <div class="flex flex-wrap gap-4 fade-in-up delay-3">
+          <a href="marketplace.html"
+             class="px-7 py-3 bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-xl transition-all shadow-lg shadow-orange-500/30 flex items-center gap-2">
+            <i class="fas fa-store"></i> Browse Marketplace
+          </a>
+          <a href="vendor-marketplace.html"
+             class="px-7 py-3 bg-white/10 hover:bg-white/20 border border-white/20 text-white font-semibold rounded-xl transition-all flex items-center gap-2">
+            <i class="fas fa-users"></i> Find Suppliers
+          </a>
+        </div>
+
+        <!-- Stats row -->
+        <div class="grid grid-cols-3 gap-4 mt-12 fade-in-up delay-3">
+          <div class="stat-card rounded-2xl p-4 text-center">
+            <div class="text-2xl font-extrabold text-orange-400">500+</div>
+            <div class="text-xs text-gray-400 mt-1">Farmers</div>
+          </div>
+          <div class="stat-card rounded-2xl p-4 text-center">
+            <div class="text-2xl font-extrabold text-blue-400">300+</div>
+            <div class="text-xs text-gray-400 mt-1">Businesses</div>
+          </div>
+          <div class="stat-card rounded-2xl p-4 text-center">
+            <div class="text-2xl font-extrabold text-green-400">₹50L+</div>
+            <div class="text-xs text-gray-400 mt-1">Transacted</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Floating visual card -->
+      <div class="hidden md:flex justify-center items-center">
+        <div class="relative float-anim">
+          <!-- Main card -->
+          <div class="bg-white rounded-3xl shadow-2xl p-6 w-72">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center">
+                <i class="fas fa-box text-orange-500"></i>
+              </div>
+              <div>
+                <div class="font-bold text-sm">Fresh Tomatoes</div>
+                <div class="text-xs text-gray-400">Vegetables · In Stock</div>
+              </div>
+              <span class="ml-auto text-xs bg-green-100 text-green-700 px-2 py-1 rounded-full">✓ Live</span>
+            </div>
+            <img src="Marketplace_Images/Tomato.jpeg" class="w-full h-32 object-cover rounded-xl mb-4" onerror="this.src='https://cdn-icons-png.flaticon.com/512/3081/3081559.png'">
+            <div class="flex justify-between items-center">
+              <span class="text-xl font-extrabold text-orange-500">₹45/kg</span>
+              <span class="text-xs text-yellow-600 bg-yellow-50 px-2 py-1 rounded-lg">★ 4.8</span>
+            </div>
+          </div>
+          <!-- Floating badge -->
+          <div class="absolute -top-4 -right-4 bg-orange-500 text-white text-xs font-bold px-3 py-2 rounded-xl shadow-lg">
+            🔥 Hot Deal
+          </div>
+          <div class="absolute -bottom-4 -left-4 bg-white text-gray-700 text-xs font-semibold px-3 py-2 rounded-xl shadow-lg flex items-center gap-2">
+            <i class="fas fa-truck text-orange-500"></i> Fast Delivery
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════ FEATURES STRIP -->
+  <section class="bg-white border-b border-gray-100 py-8">
+    <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+      <div class="flex flex-col items-center gap-2">
+        <div class="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center">
+          <i class="fas fa-bolt text-orange-500 text-lg"></i>
+        </div>
+        <span class="font-semibold text-sm">Fast Matching</span>
+        <span class="text-xs text-gray-500">Connect instantly</span>
+      </div>
+      <div class="flex flex-col items-center gap-2">
+        <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+          <i class="fas fa-shield-alt text-blue-500 text-lg"></i>
+        </div>
+        <span class="font-semibold text-sm">Verified Partners</span>
+        <span class="text-xs text-gray-500">Quality assured</span>
+      </div>
+      <div class="flex flex-col items-center gap-2">
+        <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+          <i class="fas fa-tags text-green-500 text-lg"></i>
+        </div>
+        <span class="font-semibold text-sm">Best Prices</span>
+        <span class="text-xs text-gray-500">Competitive rates</span>
+      </div>
+      <div class="flex flex-col items-center gap-2">
+        <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center">
+          <i class="fas fa-truck text-purple-500 text-lg"></i>
+        </div>
+        <span class="font-semibold text-sm">Quick Delivery</span>
+        <span class="text-xs text-gray-500">Reliable shipping</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════ MARKETPLACE PREVIEW -->
+  <section class="max-w-7xl mx-auto px-6 py-16">
+    <div class="flex items-center justify-between mb-8">
+      <div>
+        <h2 class="text-3xl font-extrabold text-gray-900">Featured Products</h2>
+        <p class="text-gray-500 mt-1">Top picks from our marketplace</p>
+      </div>
+      <a href="marketplace.html"
+         class="px-5 py-2.5 bg-orange-500 hover:bg-orange-600 text-white text-sm font-semibold rounded-xl transition-all flex items-center gap-2">
+        View All <i class="fas fa-arrow-right"></i>
+      </a>
+    </div>
+
+    <!-- Cards grid -->
+    <div id="previewGrid" class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <!-- Skeleton loaders -->
+      <div class="bg-white rounded-2xl shadow p-4 animate-pulse">
+        <div class="h-36 bg-gray-200 rounded-xl mb-4"></div>
+        <div class="h-4 bg-gray-200 rounded mb-2 w-3/4"></div>
+        <div class="h-3 bg-gray-100 rounded mb-3 w-1/2"></div>
+        <div class="h-8 bg-gray-200 rounded-lg"></div>
+      </div>
+      <div class="bg-white rounded-2xl shadow p-4 animate-pulse">
+        <div class="h-36 bg-gray-200 rounded-xl mb-4"></div>
+        <div class="h-4 bg-gray-200 rounded mb-2 w-3/4"></div>
+        <div class="h-3 bg-gray-100 rounded mb-3 w-1/2"></div>
+        <div class="h-8 bg-gray-200 rounded-lg"></div>
+      </div>
+      <div class="bg-white rounded-2xl shadow p-4 animate-pulse hidden md:block">
+        <div class="h-36 bg-gray-200 rounded-xl mb-4"></div>
+        <div class="h-4 bg-gray-200 rounded mb-2 w-3/4"></div>
+        <div class="h-3 bg-gray-100 rounded mb-3 w-1/2"></div>
+        <div class="h-8 bg-gray-200 rounded-lg"></div>
+      </div>
+      <div class="bg-white rounded-2xl shadow p-4 animate-pulse hidden lg:block">
+        <div class="h-36 bg-gray-200 rounded-xl mb-4"></div>
+        <div class="h-4 bg-gray-200 rounded mb-2 w-3/4"></div>
+        <div class="h-3 bg-gray-100 rounded mb-3 w-1/2"></div>
+        <div class="h-8 bg-gray-200 rounded-lg"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════ CTA BANNER -->
+  <section class="bg-gradient-to-r from-orange-500 to-orange-600 py-14 px-6">
+    <div class="max-w-4xl mx-auto text-center text-white">
+      <h2 class="text-3xl font-extrabold mb-3">Ready to grow your business?</h2>
+      <p class="text-orange-100 mb-7 text-lg">Join thousands of vendors and suppliers already on VendorLink.</p>
+      <a href="marketplace.html"
+         class="inline-block px-8 py-3.5 bg-white text-orange-600 font-bold rounded-xl hover:bg-orange-50 transition-all shadow-lg">
+        Explore Marketplace <i class="fas fa-arrow-right ml-2"></i>
+      </a>
+    </div>
+  </section>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const user = JSON.parse(localStorage.getItem('user'));
+      if (!user) { window.location.href = 'index.html'; return; }
+
+      const name = user.name || user.fullName || user.username || 'User';
+      document.getElementById('heroUserName').textContent = name;
+      document.getElementById('avatarChip').textContent   = name.charAt(0).toUpperCase();
+
+      const badge = document.getElementById('heroRoleBadge');
+      if (user.role === 'vendor') {
+        badge.textContent = 'Vendor';
+        badge.className = 'ml-1 px-2 py-0.5 rounded-full text-xs font-bold bg-blue-500/30 text-blue-200';
+      } else if (user.role === 'supplier') {
+        badge.textContent = 'Supplier';
+        badge.className = 'ml-1 px-2 py-0.5 rounded-full text-xs font-bold bg-green-500/30 text-green-200';
+      } else {
+        badge.textContent = 'Customer';
+        badge.className = 'ml-1 px-2 py-0.5 rounded-full text-xs font-bold bg-purple-500/30 text-purple-200';
+      }
+
+      loadPreviewProducts();
+    });
+
+    async function loadPreviewProducts() {
+      try {
+        const res = await fetch('/api/products');
+        if (!res.ok) throw new Error();
+        const data = await res.json();
+        const products = (Array.isArray(data) ? data : data.products || []).slice(0, 8);
+        renderPreview(products);
+      } catch {
+        // fallback static cards
+        renderPreview([
+          { name: 'Fresh Tomatoes',  category: 'Vegetables', price: 45,  rating: 4.8, inStock: true,  image: 'Marketplace_Images/Tomato.jpeg',   tags: ['Organic'] },
+          { name: 'Basmati Rice',    category: 'Grains',     price: 80,  rating: 4.6, inStock: true,  image: 'Marketplace_Images/rice.jpeg',     tags: ['Bulk'] },
+          { name: 'Red Onions',      category: 'Vegetables', price: 30,  rating: 4.5, inStock: true,  image: 'Marketplace_Images/onion.jpeg',    tags: ['Daily-use'] },
+          { name: 'Red Chilli',      category: 'Spices',     price: 120, rating: 4.7, inStock: true,  image: 'Marketplace_Images/chilli.jpeg',   tags: ['Premium'] },
+          { name: 'Fresh Milk',      category: 'Dairy',      price: 55,  rating: 4.9, inStock: true,  image: 'Marketplace_Images/milk.jpeg',     tags: ['Daily-use'] },
+          { name: 'Paneer',          category: 'Dairy',      price: 280, rating: 4.7, inStock: false, image: 'Marketplace_Images/panner.jpeg',   tags: ['Premium'] },
+          { name: 'Potatoes',        category: 'Vegetables', price: 25,  rating: 4.4, inStock: true,  image: 'Marketplace_Images/potato.jpeg',   tags: ['Bulk'] },
+          { name: 'Turmeric Powder', category: 'Spices',     price: 95,  rating: 4.6, inStock: true,  image: 'Marketplace_Images/turmeric.jpeg', tags: ['Organic'] },
+        ]);
+      }
+    }
+
+    function renderPreview(products) {
+      const grid = document.getElementById('previewGrid');
+      if (!products.length) { grid.innerHTML = '<p class="text-gray-400 col-span-4 text-center py-10">No products available.</p>'; return; }
+
+      grid.innerHTML = products.map(p => {
+        const supplier = p.supplier || {};
+        const name     = p.name;
+        const category = p.category;
+        const price    = p.price;
+        const rating   = p.rating || supplier.rating || 0;
+        const inStock  = p.inStock !== false;
+        const image    = p.image || supplier.image || 'https://cdn-icons-png.flaticon.com/512/3081/3081559.png';
+        const tag      = (p.tags || [])[0] || '';
+
+        return `
+          <div onclick="window.location.href='marketplace.html'"
+               class="bg-white rounded-2xl shadow card-hover cursor-pointer overflow-hidden group">
+            <div class="relative">
+              <img src="${image}" class="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-300"
+                   onerror="this.src='https://cdn-icons-png.flaticon.com/512/3081/3081559.png'">
+              <span class="absolute top-2 left-2 text-xs font-semibold px-2 py-1 rounded-full
+                           ${inStock ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-600'}">
+                ${inStock ? '✓ In Stock' : '✗ Out of Stock'}
+              </span>
+              ${tag ? `<span class="absolute top-2 right-2 text-xs bg-orange-100 text-orange-700 px-2 py-1 rounded-full">${tag}</span>` : ''}
+            </div>
+            <div class="p-4">
+              <div class="flex justify-between items-start mb-1">
+                <h3 class="font-bold text-gray-900 text-sm leading-tight">${name}</h3>
+                <span class="text-xs bg-yellow-50 text-yellow-600 px-2 py-0.5 rounded-lg ml-2 shrink-0">★ ${rating}</span>
+              </div>
+              <p class="text-xs text-gray-400 mb-3">${category}</p>
+              <div class="flex items-center justify-between">
+                <span class="text-lg font-extrabold text-orange-500">₹${price}/kg</span>
+                <span class="text-xs text-orange-600 font-semibold group-hover:underline">View →</span>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+  </script>
+
+</body>
+</html>

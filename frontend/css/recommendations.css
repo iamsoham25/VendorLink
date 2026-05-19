@@ -1,0 +1,807 @@
+/**
+ * Recommendation System - Complete CSS Styles
+ * File: frontend/css/recommendations.css
+ * 
+ * Add this file to your project and link it in marketplace.html:
+ * <link rel="stylesheet" href="css/recommendations.css">
+ */
+
+/* ============================================
+   RECOMMENDATIONS SECTION CONTAINER
+   ============================================ */
+
+.recommendations-section {
+  margin: 40px 0;
+  padding: 24px;
+  background: linear-gradient(135deg, #fff5e6 0%, #ffe8cc 100%);
+  border-radius: 16px;
+  border: 2px solid #d97706;
+  box-shadow: 0 4px 15px rgba(217, 119, 6, 0.15);
+}
+
+.recommendations-header {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #92400e;
+  margin: 0 0 24px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  letter-spacing: 0.5px;
+}
+
+/* ============================================
+   RECOMMENDATIONS GRID
+   ============================================ */
+
+.recommendations-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  margin-top: 24px;
+}
+
+@media (max-width: 768px) {
+  .recommendations-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .recommendations-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .recommendations-section {
+    padding: 16px;
+    margin: 24px 0;
+  }
+}
+
+/* ============================================
+   VENDOR RECOMMENDATION CARD
+   ============================================ */
+
+.vendor-recommendation-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.vendor-recommendation-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(217, 119, 6, 0.25);
+}
+
+.vendor-recommendation-card:active {
+  transform: translateY(-4px);
+}
+
+/* ============================================
+   CARD IMAGE SECTION
+   ============================================ */
+
+.vendor-card-image {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #f3f4f6, #e5e7eb);
+}
+
+.vendor-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.vendor-recommendation-card:hover .vendor-card-image img {
+  transform: scale(1.05);
+}
+
+/* Badge - Match Score */
+
+.match-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  backdrop-filter: blur(4px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.badge-gold {
+  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+}
+
+.badge-silver {
+  background: linear-gradient(135deg, #d1d5db 0%, #9ca3af 100%);
+}
+
+.badge-bronze {
+  background: linear-gradient(135deg, #fb923c 0%, #f97316 100%);
+}
+
+/* Badge - Ranking */
+
+.ranking-badge {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  background: rgba(0, 0, 0, 0.75);
+  color: white;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  backdrop-filter: blur(4px);
+}
+
+/* ============================================
+   CARD CONTENT SECTION
+   ============================================ */
+
+.vendor-card-content {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.vendor-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0 0 8px 0;
+  line-height: 1.3;
+}
+
+.vendor-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  color: #6b7280;
+  margin-bottom: 12px;
+  gap: 8px;
+}
+
+.location,
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* ============================================
+   RECOMMENDATION DETAIL
+   ============================================ */
+
+.recommendation-detail {
+  background: #f9fafb;
+  padding: 10px;
+  border-radius: 6px;
+  margin-bottom: 12px;
+  border-left: 3px solid #d97706;
+}
+
+.recommendation-detail small {
+  display: block;
+  color: #6b7280;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+  font-weight: 600;
+}
+
+.recommendation-reason {
+  font-size: 0.8rem;
+  color: #374151;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* ============================================
+   CARD ACTIONS
+   ============================================ */
+
+.vendor-card-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.btn-primary,
+.btn-secondary {
+  flex: 1;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.btn-primary {
+  background: #d97706;
+  color: white;
+}
+
+.btn-primary:hover {
+  background: #b45309;
+}
+
+.btn-primary:active {
+  transform: scale(0.95);
+}
+
+.btn-secondary {
+  background: #e5e7eb;
+  color: #374151;
+}
+
+.btn-secondary:hover {
+  background: #d1d5db;
+}
+
+.btn-secondary:active {
+  transform: scale(0.95);
+}
+
+/* ============================================
+   MODAL STYLES
+   ============================================ */
+
+.modal {
+  display: block;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  animation: fadeIn 0.3s ease;
+  overflow-y: auto;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.modal-content {
+  background-color: white;
+  margin: 5% auto;
+  padding: 0;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 600px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 640px) {
+  .modal-content {
+    width: 95%;
+    margin: 20% auto;
+  }
+}
+
+/* Modal Header */
+
+.modal-header {
+  padding: 20px;
+  border-bottom: 1px solid #e5e7eb;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #1f2937;
+  font-weight: 700;
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: #6b7280;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.3s ease;
+}
+
+.modal-close:hover {
+  color: #1f2937;
+}
+
+/* Modal Body */
+
+.modal-body {
+  padding: 20px;
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+.modal-body::-webkit-scrollbar {
+  width: 8px;
+}
+
+.modal-body::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+.modal-body::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+.modal-body::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Vendor Info in Modal */
+
+.vendor-info {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+.vendor-modal-image {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+  background: #f3f4f6;
+}
+
+.vendor-details p {
+  margin: 8px 0;
+  font-size: 0.95rem;
+  color: #374151;
+}
+
+.vendor-details a {
+  color: #d97706;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.vendor-details a:hover {
+  color: #b45309;
+  text-decoration: underline;
+}
+
+/* ============================================
+   RECOMMENDATION BREAKDOWN
+   ============================================ */
+
+.recommendation-breakdown {
+  background: #f9fafb;
+  padding: 16px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  border: 1px solid #e5e7eb;
+}
+
+.recommendation-breakdown h3 {
+  margin: 0 0 16px 0;
+  font-size: 1.1rem;
+  color: #1f2937;
+  font-weight: 700;
+}
+
+.score-breakdown {
+  margin-bottom: 16px;
+}
+
+.score-item {
+  margin-bottom: 16px;
+}
+
+.score-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.score-bar {
+  width: 100%;
+  height: 8px;
+  background: #e5e7eb;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 4px;
+}
+
+.score-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #fbbf24 0%, #d97706 100%);
+  transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 4px;
+}
+
+.score-value {
+  font-size: 0.8rem;
+  color: #6b7280;
+  text-align: right;
+  font-weight: 600;
+}
+
+.score-explanations {
+  margin-top: 12px;
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+.score-explanations p {
+  margin: 8px 0;
+  color: #4b5563;
+}
+
+/* ============================================
+   TOP PRODUCTS SECTION
+   ============================================ */
+
+.top-products {
+  margin-top: 20px;
+}
+
+.top-products h3 {
+  margin: 0 0 12px 0;
+  font-size: 1.1rem;
+  color: #1f2937;
+  font-weight: 700;
+}
+
+.products-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.product-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background: white;
+  border-radius: 6px;
+  border: 1px solid #e5e7eb;
+  font-size: 0.85rem;
+  transition: all 0.3s ease;
+}
+
+.product-item:hover {
+  background: #f9fafb;
+  border-color: #d97706;
+}
+
+.product-name {
+  font-weight: 600;
+  color: #1f2937;
+  flex: 1;
+}
+
+.product-category {
+  color: #d97706;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0 8px;
+  font-weight: 600;
+}
+
+.product-price {
+  font-weight: 700;
+  color: #059669;
+}
+
+/* Modal Footer */
+
+.modal-footer {
+  padding: 20px;
+  border-top: 1px solid #e5e7eb;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* ============================================
+   NO RECOMMENDATIONS STATE
+   ============================================ */
+
+.no-recommendations {
+  text-align: center;
+  padding: 40px;
+  color: #6b7280;
+  font-style: italic;
+  background: white;
+  border-radius: 12px;
+  border: 1px dashed #e5e7eb;
+}
+
+/* ============================================
+   USER PROFILE SECTION
+   ============================================ */
+
+.profile-section {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  margin-top: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.profile-section h3 {
+  margin: 0 0 16px 0;
+  font-size: 1.2rem;
+  color: #1f2937;
+  font-weight: 700;
+}
+
+.profile-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin: 16px 0;
+}
+
+@media (max-width: 640px) {
+  .profile-stats {
+    grid-template-columns: 1fr;
+  }
+}
+
+.stat-item {
+  text-align: center;
+  padding: 16px;
+  background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+}
+
+.stat-value {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #d97706;
+  margin: 0;
+}
+
+.stat-label {
+  font-size: 0.8rem;
+  color: #6b7280;
+  margin-top: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  font-weight: 600;
+}
+
+.profile-preferences {
+  margin-top: 20px;
+}
+
+.profile-preferences h4 {
+  margin: 16px 0 8px 0;
+  font-size: 0.95rem;
+  color: #1f2937;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.category-tag {
+  display: inline-block;
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+  color: #92400e;
+  padding: 6px 12px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border: 1px solid #fcd34d;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+@media (max-width: 768px) {
+  .recommendations-section {
+    border-radius: 12px;
+    padding: 16px;
+  }
+
+  .recommendations-header {
+    font-size: 1.3rem;
+  }
+
+  .vendor-info {
+    grid-template-columns: 120px 1fr;
+  }
+
+  .vendor-modal-image {
+    width: 120px;
+    height: 120px;
+  }
+}
+
+@media (max-width: 480px) {
+  .recommendations-section {
+    margin: 24px 0;
+    padding: 12px;
+  }
+
+  .recommendations-header {
+    font-size: 1.1rem;
+  }
+
+  .vendor-card-actions {
+    flex-direction: column;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    width: 100%;
+  }
+
+  .modal-header {
+    padding: 16px;
+  }
+
+  .modal-body {
+    padding: 16px;
+  }
+
+  .modal-footer {
+    padding: 16px;
+  }
+}
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+
+.vendor-recommendation-card:focus {
+  outline: 2px solid #d97706;
+  outline-offset: 2px;
+}
+
+button:focus {
+  outline: 2px solid #d97706;
+  outline-offset: 2px;
+}
+
+/* High contrast mode support */
+
+@media (prefers-contrast: more) {
+  .vendor-recommendation-card {
+    border: 2px solid #1f2937;
+  }
+
+  .match-badge {
+    border: 1px solid #000;
+  }
+}
+
+/* Reduced motion support */
+
+@media (prefers-reduced-motion: reduce) {
+  .vendor-recommendation-card,
+  .vendor-card-image img,
+  .modal,
+  .modal-content,
+  .score-fill {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Dark mode support */
+
+@media (prefers-color-scheme: dark) {
+  .recommendations-section {
+    background: linear-gradient(135deg, #2d2416 0%, #3d2d1a 100%);
+    border-color: #92400e;
+  }
+
+  .recommendations-header {
+    color: #fbbf24;
+  }
+
+  .vendor-recommendation-card {
+    background: #1f2937;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  }
+
+  .vendor-name {
+    color: #f3f4f6;
+  }
+
+  .vendor-meta {
+    color: #d1d5db;
+  }
+
+  .recommendation-reason {
+    color: #e5e7eb;
+  }
+
+  .modal-content {
+    background-color: #1f2937;
+  }
+
+  .modal-header h2 {
+    color: #f3f4f6;
+  }
+
+  .modal-header {
+    border-bottom-color: #374151;
+  }
+
+  .recommendation-breakdown {
+    background: #111827;
+    border-color: #374151;
+  }
+
+  .recommendation-breakdown h3 {
+    color: #f3f4f6;
+  }
+
+  .score-explanations p {
+    color: #d1d5db;
+  }
+}

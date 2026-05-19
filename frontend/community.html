@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-gray-100 dark:bg-gray-900">
+<head>
+  <meta charset="UTF-8">
+  <title>Community Hub • VendorLink</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config = { darkMode: "class" };</script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="text-gray-900 dark:text-gray-100">
+
+
+
+<script type="module" src="assets/js/navbar.js"></script>
+
+<div class="max-w-4xl mx-auto px-6 py-10">
+
+  <h1 class="text-4xl font-bold text-amber-600 mb-8">Community Hub</h1>
+
+  <p class="text-gray-500 dark:text-gray-300 mb-6">
+    Ask questions, share tips, and connect with other vendors and suppliers.
+  </p>
+
+  <!-- Post form -->
+  <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow mb-8">
+    <textarea id="postInput" placeholder="Share something..." class="w-full p-3 rounded-lg dark:bg-gray-900 border mb-3"></textarea>
+    <button id="postBtn" class="bg-amber-600 hover:bg-amber-700 text-white px-5 py-2 rounded-lg">Post</button>
+  </div>
+
+  <!-- Posts section -->
+  <div id="postList" class="space-y-4"></div>
+
+</div>
+
+<script>
+  const postBtn = document.getElementById("postBtn");
+  const postInput = document.getElementById("postInput");
+  const postList = document.getElementById("postList");
+
+  postBtn.addEventListener("click", () => {
+    if (!postInput.value.trim()) return alert("Write something!");
+
+    const newPost = `
+      <div class="bg-white dark:bg-gray-800 p-5 rounded-xl shadow">
+        <p class="text-gray-800 dark:text-gray-100">${postInput.value}</p>
+        <p class="text-xs text-gray-500 mt-2">Posted just now</p>
+      </div>
+    `;
+
+    postList.innerHTML = newPost + postList.innerHTML;
+    postInput.value = "";
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-gray-50">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Supplier Marketplace - Vendor Requirements | VendorLink</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    @keyframes slide-up {
+      from {
+        transform: translateY(20px);
+        opacity: 0;
+      }
+
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .slide-up {
+      animation: slide-up 0.6s ease-out;
+    }
+
+    .requirement-card {
+      transition: all 0.3s ease;
+    }
+
+    .requirement-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    .stat-card {
+      transition: all 0.3s ease;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .filter-chip {
+      transition: all 0.2s ease;
+    }
+
+    .filter-chip:hover {
+      transform: scale(1.05);
+    }
+
+    .filter-chip.active {
+      background: linear-gradient(135deg, #10b981, #059669);
+      color: white;
+    }
+
+    .urgency-high {
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0.7;
+      }
+    }
+
+    .skeleton {
+      background: linear-gradient(90deg, #f3f4f6 25%, #e5e7eb 50%, #f3f4f6 75%);
+      background-size: 200% 100%;
+      animation: skeleton-loading 1.5s infinite;
+      border-radius: 0.5rem;
+    }
+
+    @keyframes skeleton-loading {
+      0% {
+        background-position: 200% 0;
+      }
+
+      100% {
+        background-position: -200% 0;
+      }
+    }
+
+    .empty-state {
+      animation: fade-in 0.5s ease-out;
+    }
+
+    @keyframes fade-in {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+
+<body class="text-gray-900">
+
+  <!-- Header -->
+  <header class="bg-white shadow-sm border-b">
+    <div class="max-w-7xl mx-auto px-4 py-4">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center space-x-4">
+          <h1 class="text-2xl font-bold text-green-600">
+            <i class="fas fa-hand-holding-usd mr-2"></i>Vendor Requirements
+          </h1>
+          <span class="text-sm text-gray-500">Find opportunities that match your capabilities</span>
+        </div>
+
+        <div class="flex items-center space-x-4">
+          <button onclick="showMyProposals()" class="px-4 py-2 bg-gray-100 rounded-lg hover:bg-gray-200 transition">
+            <i class="fas fa-paper-plane mr-2"></i>My Proposals
+            <span id="proposalCount" class="ml-2 bg-green-600 text-white px-2 py-1 rounded-full text-xs">0</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Analytics Dashboard -->
+  <section class="max-w-7xl mx-auto px-4 py-6">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+      <div class="stat-card bg-white rounded-xl shadow-sm p-4 slide-up">
+        <div class="flex items-center justify-between">
+          <div>
+            <p class="text-sm text-gray-600">Total Requirements</p>
+            <p id="stat-total-req" class="text-2xl font-bold text-gray-900">0</p>
+            <p class="text-xs text-green-600">+12% this week</p>
+          </div>
+          <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+            <i class="fas fa-clipboard-list text-blue-600"></i>
+          </div>
+        </div>
+      </div>
+
+      <div class="stat-card bg-white rounded-xl shadow-sm p-4 slide-up" style="animation-delay: 0.1s;">
+        <div class="flex items-center justify-between">
+          <div>
+            <p class="text-sm text-gray-600">Proposals Sent</p>
+            <p id="stat-proposals" class="text-2xl font-bold text-gray-900">0</p>
+            <p class="text-xs text-green-600">+25% conversion</p>
+          </div>
+          <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
+            <i class="fas fa-paper-plane text-green-600"></i>
+          </div>
+        </div>
+      </div>
+
+      <div class="stat-card bg-white rounded-xl shadow-sm p-4 slide-up" style="animation-delay: 0.2s;">
+        <div class="flex items-center justify-between">
+          <div>
+            <p class="text-sm text-gray-600">Active Orders</p>
+            <p id="stat-active-orders" class="text-2xl font-bold text-gray-900">0</p>
+            <p id="stat-active-orders-note" class="text-xs text-orange-600">0 pending delivery</p>
+          </div>
+          <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
+            <i class="fas fa-box text-orange-600"></i>
+          </div>
+        </div>
+      </div>
+
+      <div class="stat-card bg-white rounded-xl shadow-sm p-4 slide-up" style="animation-delay: 0.3s;">
+        <div class="flex items-center justify-between">
+          <div>
+            <p class="text-sm text-gray-600">Revenue</p>
+            <p id="stat-revenue" class="text-2xl font-bold text-gray-900">₹0</p>
+            <p id="stat-revenue-note" class="text-xs text-green-600">Based on your completed orders</p>
+          </div>
+          <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
+            <i class="fas fa-rupee-sign text-purple-600"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Search & Filters Section -->
+    <div class="bg-white rounded-xl shadow-sm p-6 mb-6 slide-up">
+      <div class="grid md:grid-cols-2 gap-4 mb-4">
+        <div>
+          <div class="relative">
+            <i class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+            <input type="text" id="searchInput" placeholder="Search requirements by material, location, or vendor..."
+              class="w-full pl-10 pr-4 py-3 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent">
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+
+    <!-- Results Header -->
+    <div class="flex items-center justify-between mb-4">
+      <div>
+        <h2 class="text-xl font-semibold">Found <span id="requirementCount">15</span> Requirements</h2>
+        <p class="text-sm text-gray-600">Matching your capabilities</p>
+      </div>
+
+      <div class="flex items-center space-x-4">
+        <button id="refreshBtn" class="p-2 bg-white border rounded-lg hover:bg-gray-50 transition text-gray-600"
+          title="Refresh Requirements">
+          <i class="fas fa-sync-alt"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Requirements Grid -->
+    <div id="requirementsGrid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- To be populated dynamically -->
+    </div>
+
+    </main>
+
+    <!-- Requirement Details Modal -->
+    <div id="requirementDetailsModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center overflow-y-auto">
+      <div class="bg-white rounded-xl p-6 max-w-2xl w-full mx-4 my-8">
+        <div class="flex items-center justify-between mb-6">
+          <div>
+            <h3 class="text-2xl font-semibold">Requirement Details</h3>
+            <p id="detailsVendorLabel" class="text-sm text-gray-500">Full request from vendor</p>
+          </div>
+          <button onclick="closeRequirementDetailsModal()" class="text-gray-500 hover:text-gray-700 text-2xl">✕</button>
+        </div>
+        <div id="requirementDetailsContent" class="space-y-4 text-sm text-gray-700"></div>
+        <div class="mt-6 flex flex-col sm:flex-row sm:justify-end sm:space-x-3 gap-3">
+          <button onclick="closeRequirementDetailsModal()"
+            class="w-full sm:w-auto px-4 py-2 border rounded-lg hover:bg-gray-50">Close</button>
+          <button id="detailsSendProposalBtn" onclick="sendProposal(currentRequirementId)"
+            class="w-full sm:w-auto px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700">
+            Send Proposal
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick Proposal Modal -->
+    <div id="proposalModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center">
+      <div class="bg-white rounded-xl p-6 max-w-md w-full mx-4">
+        <h3 class="text-lg font-semibold mb-4">Send Quick Proposal</h3>
+        <form onsubmit="submitProposal(event)">
+          <div class="space-y-4">
+            <div>
+              <label class="block text-sm font-medium mb-1">Your Price Per Unit</label>
+              <input type="text" name="pricePerUnit" required placeholder="₹100 per kg" class="w-full px-3 py-2 border rounded-lg">
+            </div>
+            <div>
+              <label class="block text-sm font-medium mb-1">Available Quantity</label>
+              <input type="text" name="availableQuantity" required placeholder="500 kg" class="w-full px-3 py-2 border rounded-lg">
+            </div>
+            <div>
+              <label class="block text-sm font-medium mb-1">Delivery Timeline</label>
+              <input type="text" name="deliveryTimeline" required placeholder="7 days" class="w-full px-3 py-2 border rounded-lg">
+            </div>
+            <div>
+              <label class="block text-sm font-medium mb-1">Additional Notes</label>
+              <textarea name="additionalNotes" rows="3" placeholder="Quality specifications, certifications, etc."
+                class="w-full px-3 py-2 border rounded-lg"></textarea>
+            </div>
+          </div>
+          <div class="flex space-x-3 mt-6">
+            <button type="button" onclick="closeProposalModal()"
+              class="flex-1 px-4 py-2 border rounded-lg hover:bg-gray-50">
+              Cancel
+            </button>
+            <button type="submit" class="flex-1 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700">
+              Send Proposal
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- My Proposals Modal -->
+    <div id="myProposalsModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center overflow-y-auto">
+      <div class="bg-white rounded-xl p-6 max-w-2xl w-full mx-4 my-8">
+        <div class="flex items-center justify-between mb-6">
+          <h3 class="text-2xl font-semibold">My Proposals</h3>
+          <button onclick="closeMyProposalsModal()" class="text-gray-500 hover:text-gray-700 text-2xl">✕</button>
+        </div>
+        
+        <div id="proposalsList" class="space-y-4">
+          <p class="text-center text-gray-400 py-8">Loading proposals...</p>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="assets/js/navbar.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="assets/js/supplier-marketplace.js"></script>
+
+</body>
+
+</html>

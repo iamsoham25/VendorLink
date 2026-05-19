@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-gray-100 dark:bg-gray-900">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Sign Up • VendorLink</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config = { darkMode: "class" }</script>
+
+  <!-- styles same as index.html -->
+  <style>
+    .nav-link {
+      color: #444;
+      text-decoration: none;
+    }
+
+    .nav-link:hover {
+      color: #d97706;
+    }
+
+    .dark .nav-link {
+      color: #ddd;
+    }
+
+    .btn-outline {
+      padding: 6px 14px;
+      border: 1px solid #d97706;
+      color: #d97706;
+      border-radius: 8px;
+    }
+
+    .btn-filled {
+      background: #d97706;
+      color: white;
+      padding: 6px 14px;
+      border-radius: 8px;
+    }
+
+    .profile-btn {
+      padding: 6px 14px;
+      background: #f3f4f6;
+      border-radius: 8px;
+    }
+
+    .dropdown-item {
+      padding: 10px 15px;
+      display: block;
+    }
+
+    .toggle-checkbox {
+      width: 40px;
+      height: 20px;
+      accent-color: #d97706;
+    }
+
+    .theme-btn {
+      padding: 6px;
+      background: #e5e7eb;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+
+<body class="text-gray-900 dark:text-gray-100">
+
+
+  <main class="min-h-[80vh] flex items-center justify-center px-4">
+    <div class="bg-white dark:bg-gray-800 shadow-xl rounded-2xl p-10 w-full max-w-md">
+
+      <h1 class="text-3xl font-bold text-center mb-6">Create an Account</h1>
+
+      <form id="signupForm" class="space-y-5">
+        <div>
+          <label>Name</label>
+          <input id="name" required class="w-full p-3 border rounded-lg dark:bg-gray-900">
+        </div>
+
+        <div>
+          <label>Email</label>
+          <input id="email" required class="w-full p-3 border rounded-lg dark:bg-gray-900">
+        </div>
+
+        <div>
+          <label>Password</label>
+          <input id="password" type="password" required class="w-full p-3 border rounded-lg dark:bg-gray-900">
+        </div>
+
+        <div>
+          <label>Role</label>
+          <select id="role" class="w-full p-3 border rounded-lg dark:bg-gray-900">
+            <option value="vendor">Vendor</option>
+            <option value="supplier">Supplier</option>
+            <option value="customer">Customer</option>
+          </select>
+        </div>
+
+        <!-- Vendor-specific fields (shown only when role is vendor) -->
+        <div id="vendorFields" class="hidden space-y-4">
+          <div>
+            <label>Shop/Vendor Name</label>
+            <input id="shopName" class="w-full p-3 border rounded-lg dark:bg-gray-900" placeholder="Your shop name">
+          </div>
+
+          <div>
+            <label>Category</label>
+            <input id="category" class="w-full p-3 border rounded-lg dark:bg-gray-900" placeholder="e.g., Raw Materials, Food, etc.">
+          </div>
+
+          <div>
+            <label>Location</label>
+            <input id="location" class="w-full p-3 border rounded-lg dark:bg-gray-900" placeholder="Your city/location">
+          </div>
+
+          <div>
+            <label>Contact Number</label>
+            <input id="contact" type="tel" class="w-full p-3 border rounded-lg dark:bg-gray-900" placeholder="Your phone number">
+          </div>
+        </div>
+
+        <button class="w-full bg-amber-600 py-3 rounded-lg text-white font-semibold">Create Account</button>
+      </form>
+
+      <p class="text-center mt-4">Already have an account?
+        <a href="login.html" class="text-amber-600">Login</a>
+      </p>
+    </div>
+  </main>
+
+  <script type="module" src="assets/js/navbar.js"></script>
+  <script type="module" src="assets/js/signup.js"></script>
+
+</body>
+
+</html>

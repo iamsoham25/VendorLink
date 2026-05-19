@@ -1,0 +1,53 @@
+{
+  "name": "vendorlink-backend",
+  "version": "1.0.0",
+  "description": "Backend for VendorLink Hackathon project using Node.js, Express, MongoDB Atlas",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "jest --detectOpenHandles",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "lint": "eslint .",
+    "build": "npm install"
+  },
+  "keywords": [
+    "node",
+    "express",
+    "mongodb",
+    "vendorlink",
+    "backend",
+    "api"
+  ],
+  "author": "Omkar Suryakant Shinde",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.6.1",
+    "dotenv-safe": "^9.1.0",
+    "express": "^4.21.2",
+    "express-mongo-sanitize": "^2.2.0",
+    "express-rate-limit": "^8.2.1",
+    "express-validator": "^7.3.1",
+    "helmet": "^8.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.20.1",
+    "morgan": "^1.10.1",
+    "nodemailer": "^8.0.1",
+    "pdfkit": "^0.17.2",
+    "razorpay": "^2.9.2",
+    "redis": "^5.11.0",
+    "socket.io": "^4.7.2",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1",
+    "winston": "^3.19.0"
+  },
+  "devDependencies": {
+    "jest": "^30.2.0",
+    "jest-environment-jsdom": "^30.2.0",
+    "nodemon": "^3.1.14",
+    "supertest": "^7.2.2"
+  }
+}

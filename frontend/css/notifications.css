@@ -1,0 +1,448 @@
+/**
+ * Notification Styles
+ * File: frontend/css/notifications.css
+ * 
+ * Add this stylesheet to your HTML files in the <head> section
+ * Or merge these styles into your main styles.css
+ */
+
+/* ========================================================================== */
+/* NOTIFICATION CONTAINER */
+/* ========================================================================== */
+
+.notification-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+@media (max-width: 768px) {
+  .notification-container {
+    top: 10px;
+    right: 10px;
+    left: 10px;
+    max-width: none;
+  }
+}
+
+/* ========================================================================== */
+/* NOTIFICATION CARDS */
+/* ========================================================================== */
+
+.notification {
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  transform: translateX(400px);
+  opacity: 0;
+  transition: all 0.3s ease;
+  animation: slideIn 0.3s ease;
+}
+
+.notification.show {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(400px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOut {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(400px);
+    opacity: 0;
+  }
+}
+
+.notification.removing {
+  animation: slideOut 0.3s ease;
+}
+
+/* ========================================================================== */
+/* NOTIFICATION TYPES */
+/* ========================================================================== */
+
+/* Success Notification */
+.notification-success {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  border-left: 5px solid #047857;
+}
+
+.notification-success .notification-content {
+  background-color: rgba(255, 255, 255, 0.95);
+  color: #065f46;
+}
+
+.notification-success .notification-text strong {
+  color: #047857;
+}
+
+.notification-success i {
+  color: #10b981;
+}
+
+/* Error Notification */
+.notification-error {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  border-left: 5px solid #b91c1c;
+}
+
+.notification-error .notification-content {
+  background-color: rgba(255, 255, 255, 0.95);
+  color: #7f1d1d;
+}
+
+.notification-error .notification-text strong {
+  color: #b91c1c;
+}
+
+.notification-error i {
+  color: #ef4444;
+}
+
+/* Info Notification */
+.notification-info {
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  border-left: 5px solid #1e40af;
+}
+
+.notification-info .notification-content {
+  background-color: rgba(255, 255, 255, 0.95);
+  color: #1e3a8a;
+}
+
+.notification-info .notification-text strong {
+  color: #1e40af;
+}
+
+.notification-info i {
+  color: #3b82f6;
+}
+
+/* Warning Notification */
+.notification-warning {
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  border-left: 5px solid #b45309;
+}
+
+.notification-warning .notification-content {
+  background-color: rgba(255, 255, 255, 0.95);
+  color: #78350f;
+}
+
+.notification-warning .notification-text strong {
+  color: #b45309;
+}
+
+.notification-warning i {
+  color: #f59e0b;
+}
+
+/* ========================================================================== */
+/* NOTIFICATION CONTENT */
+/* ========================================================================== */
+
+.notification-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px;
+  border-radius: 8px;
+}
+
+.notification-content i {
+  font-size: 20px;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.notification-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+}
+
+.notification-text strong {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.notification-text p {
+  font-size: 13px;
+  margin: 0;
+  line-height: 1.4;
+  opacity: 0.9;
+}
+
+.notification-close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin-left: 8px;
+  font-size: 18px;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+  flex-shrink: 0;
+}
+
+.notification-close:hover {
+  opacity: 1;
+}
+
+/* ========================================================================== */
+/* NOTIFICATION BADGE */
+/* ========================================================================== */
+
+.notification-badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: #ef4444;
+  color: white;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: bold;
+  border: 2px solid white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(239, 68, 68, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0);
+  }
+}
+
+/* ========================================================================== */
+/* PRICE DROP ALERT SECTION */
+/* ========================================================================== */
+
+#price-alerts {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 15px;
+  margin: 20px 0;
+  padding: 20px;
+  background-color: #f8f8f8;
+  border-radius: 8px;
+}
+
+.price-alert {
+  background: white;
+  border-left: 4px solid #10b981;
+  border-radius: 6px;
+  padding: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.price-alert:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.alert-content h4 {
+  margin: 0 0 10px 0;
+  font-size: 16px;
+  color: #333;
+  font-weight: 600;
+}
+
+.old-price {
+  color: #999;
+  font-size: 14px;
+  margin: 5px 0;
+}
+
+.new-price {
+  font-size: 18px;
+  color: #10b981;
+  font-weight: bold;
+  margin: 5px 0;
+}
+
+.discount {
+  font-size: 12px;
+  background: #d1fae5;
+  color: #065f46;
+  padding: 4px 8px;
+  border-radius: 4px;
+  display: inline-block;
+  margin: 10px 0;
+}
+
+.price-alert button {
+  width: 100%;
+  padding: 8px 12px;
+  background: #10b981;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background 0.2s;
+  margin-top: 10px;
+}
+
+.price-alert button:hover {
+  background: #059669;
+}
+
+/* ========================================================================== */
+/* RESPONSIVE DESIGN */
+/* ========================================================================== */
+
+@media (max-width: 480px) {
+  .notification {
+    max-width: 100%;
+  }
+
+  .notification-content {
+    padding: 12px;
+    gap: 8px;
+  }
+
+  .notification-text strong {
+    font-size: 13px;
+  }
+
+  .notification-text p {
+    font-size: 12px;
+  }
+
+  .notification-close {
+    font-size: 16px;
+  }
+
+  #price-alerts {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ========================================================================== */
+/* ANIMATION - FADE IN/OUT */
+/* ========================================================================== */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+}
+
+/* ========================================================================== */
+/* NOTIFICATION ICON STYLING */
+/* ========================================================================== */
+
+.notification-icon {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.notification-icon:hover .notification-badge {
+  animation: none;
+  box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.2);
+}
+
+/* ========================================================================== */
+/* ACCESSIBILITY */
+/* ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .notification,
+  .notification-badge,
+  .price-alert {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .notification-content {
+    background-color: rgba(30, 30, 30, 0.95);
+    color: #f5f5f5;
+  }
+
+  .notification-success .notification-text strong {
+    color: #10b981;
+  }
+
+  .notification-error .notification-text strong {
+    color: #ef4444;
+  }
+
+  .notification-info .notification-text strong {
+    color: #3b82f6;
+  }
+
+  .notification-warning .notification-text strong {
+    color: #f59e0b;
+  }
+
+  #price-alerts {
+    background-color: #1a1a1a;
+  }
+
+  .price-alert {
+    background: #2a2a2a;
+    color: #f5f5f5;
+  }
+
+  .alert-content h4 {
+    color: #f5f5f5;
+  }
+
+  .old-price {
+    color: #999;
+  }
+}

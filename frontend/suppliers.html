@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-gray-50 dark:bg-gray-900">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Suppliers • VendorLink</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { darkMode: "class" };
+  </script>
+</head>
+
+<body class="text-gray-900 dark:text-gray-100">
+
+  <!-- Navbar -->
+  <script type="module" src="assets/js/navbar.js"></script>
+
+  <main class="max-w-6xl mx-auto px-4 py-10">
+
+    <h1 class="text-3xl font-bold text-amber-600 mb-6">Supplier Profile</h1>
+
+    <!-- Loading indicator -->
+    <p id="loadingMsg" class="text-gray-500">Loading supplier details...</p>
+
+    <!-- Supplier Card -->
+    <div id="supplierCard" class="bg-white dark:bg-gray-800 shadow rounded-2xl p-6 flex flex-col md:flex-row gap-6">
+
+      <!-- Supplier Image -->
+      <div>
+        <img id="supplierImage" src="https://i.postimg.cc/yx2c4yJQ/supplier.jpg"
+          class="w-40 h-40 rounded-xl object-cover shadow">
+      </div>
+
+      <!-- Supplier Information -->
+      <div class="flex-1">
+        <h2 id="supplierName" class="text-2xl font-bold"></h2>
+        <p id="supplierCategory" class="text-gray-600 dark:text-gray-300 mt-1"></p>
+
+        <p class="mt-2 text-gray-700 dark:text-gray-300 flex items-center gap-2">
+          ⭐ <span id="supplierRating" class="font-semibold text-lg">4.5</span>
+          <span class="text-sm text-gray-500">(Avg Rating)</span>
+        </p>
+
+        <p id="supplierLocation" class="mt-3 text-sm text-gray-600 dark:text-gray-400"></p>
+        <p id="supplierContact" class="mt-1 text-sm text-gray-600 dark:text-gray-400"></p>
+        <p id="supplierEmail" class="text-sm text-gray-600 dark:text-gray-400"></p>
+        <p id="supplierRole" class="text-sm text-gray-600 dark:text-gray-400"></p>
+        <p id="supplierShop" class="text-sm text-gray-600 dark:text-gray-400"></p>
+        <p id="supplierDescription" class="mt-3 text-sm text-gray-700 dark:text-gray-300"></p>
+        <p id="supplierCreated" class="text-sm text-gray-600 dark:text-gray-400"></p>
+        <p id="supplierUpdated" class="text-sm text-gray-600 dark:text-gray-400"></p>
+        <button id="contactBtn" class="mt-4 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg">Contact Supplier</button>
+      </div>
+    </div>
+
+    <!-- Supplier Products Section -->
+    <section class="mt-8">
+      <h2 class="text-2xl font-bold mb-4">Supplier Products</h2>
+      <div id="productList" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+    </section>
+
+    <!-- Customer Reviews Section -->
+    <section class="mt-10">
+      <h2 class="text-2xl font-bold mb-4">⭐ Customer Reviews</h2>
+
+      <!-- Reviews List -->
+      <div id="reviewsContainer" class="space-y-4"></div>
+
+      <!-- No reviews -->
+      <p id="noReviewsMsg" class="text-gray-500 dark:text-gray-400 hidden">
+        No reviews yet. Be the first to review!
+      </p>
+
+      <!-- Add Review Form -->
+      <div class="mt-8 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600
+                rounded-2xl p-6 shadow">
+        <h3 class="text-xl font-semibold mb-4">Write a Review</h3>
+
+        <label class="text-sm font-medium">Rating</label>
+        <select id="rating" class="mt-1 p-2 border rounded-lg dark:bg-gray-900 dark:border-gray-700 w-48">
+          <option value="5">⭐ 5 - Excellent</option>
+          <option value="4">⭐ 4 - Good</option>
+          <option value="3">⭐ 3 - Average</option>
+          <option value="2">⭐ 2 - Poor</option>
+          <option value="1">⭐ 1 - Very Bad</option>
+        </select>
+
+        <label class="block mt-4 text-sm font-medium">Comment</label>
+        <textarea id="comment" class="w-full mt-1 p-3 rounded-lg border dark:bg-gray-900 dark:border-gray-700"
+          placeholder="Write your review..."></textarea>
+
+        <button onclick="addReview()"
+          class="mt-4 bg-amber-600 hover:bg-amber-700 text-white px-5 py-2 rounded-lg shadow">
+          Submit Review
+        </button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Reviews Script -->
+  <script src="assets/js/reviews.js"></script>
+  <!-- Supplier profile + products script -->
+  <script type="module" src="assets/js/supplier_profile.js"></script>
+
+</body>
+
+</html>

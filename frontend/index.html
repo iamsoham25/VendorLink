@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-gray-50">
+<head>
+  <meta charset="UTF-8">
+  <title>Welcome to VendorLink - Start Your Journey</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+    
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 20px rgba(251, 146, 60, 0.5); }
+      50% { box-shadow: 0 0 40px rgba(251, 146, 60, 0.8); }
+    }
+    
+    .float-animation {
+      animation: float 3s ease-in-out infinite;
+    }
+    
+    .pulse-glow {
+      animation: pulse-glow 2s ease-in-out infinite;
+    }
+    
+    .gradient-text {
+      background: linear-gradient(135deg, #fb923c, #ea580c);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+  </style>
+</head>
+
+<body class="min-h-screen flex items-center justify-center text-gray-900">
+  
+  <!-- Main Container -->
+  <div class="container mx-auto px-4 max-w-4xl text-center">
+    
+    <!-- Logo and Title -->
+    <div class="mb-8">
+      <div class="inline-flex items-center justify-center w-20 h-20 bg-orange-500 rounded-full mb-6 pulse-glow">
+        <i class="fas fa-handshake text-white text-3xl"></i>
+      </div>
+      
+      <h1 class="text-5xl md:text-6xl font-bold mb-4">
+        <span class="gradient-text">VendorLink</span>
+      </h1>
+      
+      <p class="text-xl text-gray-600 mb-2">
+        Connecting Vendors & Suppliers
+      </p>
+      
+      <p class="text-lg text-gray-500">
+        Your B2B Procurement Platform
+      </p>
+    </div>
+    
+    <!-- Role Selection Cards -->
+    <div class="grid md:grid-cols-2 gap-8 mb-8">
+      
+      <!-- Vendor Card -->
+      <div onclick="selectRole('vendor')" class="bg-white rounded-2xl shadow-xl p-8 cursor-pointer hover:shadow-2xl transition-all duration-300 float-animation">
+        <div class="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
+          <i class="fas fa-user-tie text-white text-2xl"></i>
+        </div>
+        <h3 class="text-2xl font-bold mb-3">I'm a Vendor</h3>
+        <p class="text-gray-600 mb-4">
+          Looking for reliable suppliers for your business needs?
+        </p>
+        <ul class="text-left text-sm text-gray-600 space-y-2">
+          <li><i class="fas fa-check text-green-500 mr-2"></i>Find verified suppliers</li>
+          <li><i class="fas fa-check text-green-500 mr-2"></i>Compare prices & quality</li>
+          <li><i class="fas fa-check text-green-500 mr-2"></i>Send RFQs instantly</li>
+        </ul>
+      </div>
+      
+      <!-- Supplier Card -->
+      <div onclick="selectRole('supplier')" class="bg-white rounded-2xl shadow-xl p-8 cursor-pointer hover:shadow-2xl transition-all duration-300 float-animation" style="animation-delay: 0.5s;">
+        <div class="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
+          <i class="fas fa-industry text-white text-2xl"></i>
+        </div>
+        <h3 class="text-2xl font-bold mb-3">I'm a Supplier</h3>
+        <p class="text-gray-600 mb-4">
+          Ready to showcase your products to vendors?
+        </p>
+        <ul class="text-left text-sm text-gray-600 space-y-2">
+          <li><i class="fas fa-check text-green-500 mr-2"></i>View vendor requirements</li>
+          <li><i class="fas fa-check text-green-500 mr-2"></i>Send proposals quickly</li>
+          <li><i class="fas fa-check text-green-500 mr-2"></i>Grow your business</li>
+        </ul>
+      </div>
+      
+    </div>
+    
+    <!-- Get Started Button -->
+    <div class="mb-8">
+      <button onclick="goToRegistration()" class="px-8 py-4 bg-gradient-to-r from-orange-500 to-orange-600 text-white text-lg font-semibold rounded-xl hover:from-orange-600 hover:to-orange-700 transition-all duration-300 transform hover:scale-105">
+        Get Started Now
+        <i class="fas fa-arrow-right ml-2"></i>
+      </button>
+    </div>
+    
+    <!-- Already have account -->
+    <div class="text-center">
+      <p class="text-gray-600">
+        Already have an account? 
+        <a href="login.html" class="text-orange-600 font-semibold hover:text-orange-700">
+          Login Here
+        </a>
+      </p>
+    </div>
+    
+    <!-- Features -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12">
+      <div class="text-center">
+        <div class="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-3">
+          <i class="fas fa-bolt text-orange-600"></i>
+        </div>
+        <p class="text-sm font-semibold">Fast Matching</p>
+      </div>
+      
+      <div class="text-center">
+        <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
+          <i class="fas fa-shield-alt text-blue-600"></i>
+        </div>
+        <p class="text-sm font-semibold">Verified Partners</p>
+      </div>
+      
+      <div class="text-center">
+        <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3">
+          <i class="fas fa-dollar-sign text-green-600"></i>
+        </div>
+        <p class="text-sm font-semibold">Best Prices</p>
+      </div>
+      
+      <div class="text-center">
+        <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-3">
+          <i class="fas fa-truck text-purple-600"></i>
+        </div>
+        <p class="text-sm font-semibold">Quick Delivery</p>
+      </div>
+    </div>
+    
+  </div>
+  
+  <!-- Background Decorations -->
+  <div class="fixed top-10 left-10 w-20 h-20 bg-orange-200 rounded-full opacity-20 float-animation"></div>
+  <div class="fixed bottom-10 right-10 w-32 h-32 bg-blue-200 rounded-full opacity-20 float-animation" style="animation-delay: 1s;"></div>
+  <div class="fixed top-1/2 right-20 w-16 h-16 bg-green-200 rounded-full opacity-20 float-animation" style="animation-delay: 2s;"></div>
+  
+  <script>
+    // Direct to registration - this is the entry point
+    function selectRole(role) {
+      localStorage.setItem('selectedRole', role);
+      window.location.href = 'role-selection.html';
+    }
+    
+    function goToRegistration() {
+      window.location.href = 'role-selection.html';
+    }
+    
+    // Check if user is already logged in
+    document.addEventListener('DOMContentLoaded', () => {
+      const currentUser = JSON.parse(localStorage.getItem('user'));
+      // Don't redirect automatically - let users choose where to go
+      // The navbar will show appropriate role-specific links
+    });
+  </script>
+  
+</body>
+</html>
+
+

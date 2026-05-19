@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-gray-100 dark:bg-gray-900">
+<head>
+  <meta charset="UTF-8">
+  <title>Payment • VendorLink</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { darkMode: "class" };
+  </script>
+
+  <!-- Razorpay SDK -->
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+</head>
+
+<body class="text-gray-900 dark:text-gray-100">
+
+<!-- Navbar -->
+<script type="module" src="assets/js/navbar.js"></script>
+
+<section class="max-w-4xl mx-auto px-4 py-10">
+
+  <h1 class="text-3xl font-bold text-amber-600 mb-6">Place Your Order</h1>
+
+  <!-- Order Summary -->
+  <div class="bg-white dark:bg-gray-800 rounded-xl shadow p-6 mb-6">
+    <h2 class="text-xl font-semibold mb-4">Order Summary</h2>
+    
+    <div id="paymentItems" class="space-y-3 mb-4">
+      <!-- Dynamic items will be loaded here -->
+    </div>
+
+    <div class="border-t pt-4">
+      <div class="flex justify-between items-center text-lg font-bold">
+        <span>Total Amount:</span>
+        <span class="text-amber-600">₹<span id="paymentTotal">0</span></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Delivery Address Form -->
+  <div class="bg-white dark:bg-gray-800 rounded-xl shadow p-6 mb-6">
+    <h2 class="text-xl font-semibold mb-4">📍 Delivery Address</h2>
+    
+    <form id="addressForm" class="space-y-3">
+      <div class="grid md:grid-cols-2 gap-3">
+        <input type="text" id="fullName" placeholder="Full Name" required
+               class="px-4 py-2 border rounded-lg dark:bg-gray-700 dark:border-gray-600">
+        <input type="tel" id="phoneNumber" placeholder="Phone Number" required
+               class="px-4 py-2 border rounded-lg dark:bg-gray-700 dark:border-gray-600">
+      </div>
+      <textarea id="streetAddress" placeholder="Street Address" rows="2" required
+                class="w-full px-4 py-2 border rounded-lg dark:bg-gray-700 dark:border-gray-600"></textarea>
+      <div class="grid md:grid-cols-3 gap-3">
+        <input type="text" id="city" placeholder="City" required
+               class="px-4 py-2 border rounded-lg dark:bg-gray-700 dark:border-gray-600">
+        <input type="text" id="state" placeholder="State" required
+               class="px-4 py-2 border rounded-lg dark:bg-gray-700 dark:border-gray-600">
+        <input type="text" id="pincode" placeholder="Pincode" required
+               class="px-4 py-2 border rounded-lg dark:bg-gray-700 dark:border-gray-600">
+      </div>
+    </form>
+  </div>
+
+  <!-- Payment Options -->
+  <div class="bg-white dark:bg-gray-800 rounded-xl shadow p-6 mb-6">
+    <h2 class="text-xl font-semibold mb-4">Select Payment Method</h2>
+    
+    <div class="space-y-3">
+      <!-- Credit/Debit Card -->
+      <label class="flex items-center p-4 border rounded-lg cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-700">
+        <input type="radio" name="paymentGateway" value="card" checked class="mr-4">
+        <div class="flex items-center flex-1">
+          <svg class="w-6 h-6 mr-3 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"/>
+          </svg>
+          <div>
+            <div class="font-semibold">Credit/Debit Card</div>
+            <div class="text-sm text-gray-500">Visa, Mastercard, Rupay</div>
+          </div>
+        </div>
+      </label>
+
+      <!-- UPI -->
+      <label class="flex items-center p-4 border rounded-lg cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-700">
+        <input type="radio" name="paymentGateway" value="upi" class="mr-4">
+        <div class="flex items-center flex-1">
+          <svg class="w-6 h-6 mr-3 text-green-600" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+          </svg>
+          <div>
+            <div class="font-semibold">UPI</div>
+            <div class="text-sm text-gray-500">Google Pay, PhonePe, Paytm</div>
+          </div>
+        </div>
+      </label>
+
+      <!-- Net Banking -->
+      <label class="flex items-center p-4 border rounded-lg cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-700">
+        <input type="radio" name="paymentGateway" value="netbanking" class="mr-4">
+        <div class="flex items-center flex-1">
+          <svg class="w-6 h-6 mr-3 text-purple-600" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M5 6h14c1.1 0 2 .9 2 2v8c0 1.1-.9 2-2 2H5c-1.1 0-2-.9-2-2V8c0-1.1.9-2 2-2zm0 2v8h14V8H5zm2 2h10v2H7v-2zm0 4h10v2H7v-2z"/>
+          </svg>
+          <div>
+            <div class="font-semibold">Net Banking</div>
+            <div class="text-sm text-gray-500">All major banks supported</div>
+          </div>
+        </div>
+      </label>
+
+      <!-- Wallet -->
+      <label class="flex items-center p-4 border rounded-lg cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-700">
+        <input type="radio" name="paymentGateway" value="wallet" class="mr-4">
+        <div class="flex items-center flex-1">
+          <svg class="w-6 h-6 mr-3 text-orange-600" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M21 18v1c0 1.1-.9 2-2 2H5c-1.11 0-2-.9-2-2V5c0-1.1.89-2 2-2h14c1.1 0 2 .9 2 2v1h-9c-1.11 0-2 .9-2 2v8c0 1.1.89 2 2 2h9zm-9-2h10V8H12v8zm4-2.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/>
+          </svg>
+          <span>Wallet</span>
+        </div>
+      </label>
+
+      <!-- Cash on Delivery -->
+      <label class="flex items-center p-4 border rounded-lg cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-700">
+        <input type="radio" name="paymentGateway" value="cod" class="mr-4">
+        <div class="flex items-center flex-1">
+          <svg class="w-6 h-6 mr-3 text-green-600" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1.41 16.09V20h-2.67v-1.93c-1.71-.36-3.16-1.46-3.27-3.4h1.96c.1.81.45 1.61 1.67 1.61 1.16 0 1.6-.64 1.6-1.46 0-.84-.68-1.22-1.88-1.64-1.64-.56-3.37-1.24-3.37-3.31 0-1.66 1.16-2.79 2.97-3.15V5h2.67v1.95c1.86.45 2.79 1.86 2.85 3.39H14.3c-.05-1.11-.64-1.63-1.63-1.63-1.01 0-1.46.54-1.46 1.34 0 .85.67 1.19 1.93 1.63 1.66.57 3.33 1.26 3.33 3.38 0 1.78-1.19 2.93-3.06 3.03z"/>
+          </svg>
+          <span>Cash on Delivery (COD)</span>
+        </div>
+      </label>
+    </div>
+  </div>
+
+  <!-- Action Buttons -->
+  <div class="flex gap-4">
+    <button onclick="history.back()"
+            class="flex-1 bg-gray-300 hover:bg-gray-400 text-gray-800 py-3 px-6 rounded-xl font-semibold">
+      Back to Cart
+    </button>
+    
+    <button id="payNowButton" type="button"
+            class="flex-1 bg-amber-600 hover:bg-amber-700 text-white py-3 px-6 rounded-xl font-semibold">
+      Place Order
+    </button>
+  </div>
+
+</section>
+
+<!-- Payment Processing Modal -->
+<div id="paymentModal" class="hidden fixed inset-0 bg-black/50 flex items-center justify-center px-4 z-50">
+  <div class="bg-white dark:bg-gray-800 rounded-xl shadow-xl p-6 max-w-md w-full">
+    <div class="text-center">
+      <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-amber-600 mx-auto mb-4"></div>
+      <h3 class="text-lg font-semibold mb-2">Placing Your Order...</h3>
+      <p class="text-gray-500">Please wait while we place your order</p>
+    </div>
+  </div>
+</div>
+
+<script type="module" src="assets/js/payment.js"></script>
+
+</body>
+</html>

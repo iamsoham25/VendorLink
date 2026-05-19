@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-gray-50 dark:bg-gray-900">
+<head>
+  <meta charset="UTF-8" />
+  <title>Supplier Orders • VendorLink</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { darkMode: "class" };
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="text-gray-900 dark:text-gray-100">
+
+<!-- Navbar (injected by navbar.js) -->
+<script type="module" src="assets/js/navbar.js"></script>
+
+<main class="max-w-7xl mx-auto px-4 py-10">
+
+  <h1 class="text-3xl font-bold text-amber-600 mb-2">Supplier Order Dashboard</h1>
+  <p class="text-gray-500 dark:text-gray-400 mb-6">
+    See all incoming orders from vendors and update their status.
+  </p>
+
+  <!-- SUMMARY CARDS -->
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+    <div class="bg-white dark:bg-gray-800 shadow rounded-2xl p-4">
+      <p class="text-xs text-gray-500">Total Orders</p>
+      <p id="totalOrders" class="text-2xl font-bold mt-1">0</p>
+    </div>
+
+    <div class="bg-white dark:bg-gray-800 shadow rounded-2xl p-4">
+      <p class="text-xs text-gray-500">Pending Orders</p>
+      <p id="pendingOrders" class="text-2xl font-bold mt-1 text-yellow-600">0</p>
+    </div>
+
+    <div class="bg-white dark:bg-gray-800 shadow rounded-2xl p-4">
+      <p class="text-xs text-gray-500">Total Revenue (₹)</p>
+      <p id="totalRevenue" class="text-2xl font-bold mt-1 text-emerald-600">0</p>
+    </div>
+  </div>
+
+  <!-- ORDER TABLE -->
+  <div class="bg-white dark:bg-gray-800 shadow rounded-2xl p-4 overflow-x-auto">
+    <h2 class="text-lg font-semibold mb-4">Incoming Orders</h2>
+
+    <table class="min-w-full text-sm">
+      <thead class="border-b border-gray-200 dark:border-gray-700 text-left">
+        <tr>
+          <th class="py-2 pr-4">Order ID</th>
+          <th class="py-2 pr-4">Vendor</th>
+          <th class="py-2 pr-4">Items</th>
+          <th class="py-2 pr-4">Total (₹)</th>
+          <th class="py-2 pr-4">Status</th>
+          <th class="py-2 pr-4">Date</th>
+        </tr>
+      </thead>
+      <tbody id="ordersTableBody"></tbody>
+    </table>
+
+    <p id="noOrdersMsg" class="text-gray-500 text-sm mt-3 hidden">
+      No orders received yet.
+    </p>
+  </div>
+
+</main>
+
+<script type="module" src="assets/js/supplier_orders.js"></script>
+
+</body>
+</html>

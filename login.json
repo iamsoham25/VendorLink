@@ -1,0 +1,1 @@
+{"message":"Login success","token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InVzZXIxIiwicm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNzcyMDg3Mzg3LCJleHAiOjE3NzI2OTIxODd9.oQPzLjgfi0hSXCPxtEAgMcfTDwbA5f_MN5vvEslym0w","user":{"_id":"user1","name":"John Customer","email":"john@example.com","role":"customer"}}

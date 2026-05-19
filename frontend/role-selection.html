@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-gradient-to-br from-orange-50 to-amber-50">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Choose Your Role - VendorLink</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    @keyframes slide-up {
+      from {
+        transform: translateY(30px);
+        opacity: 0;
+      }
+
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes glow {
+
+      0%,
+      100% {
+        box-shadow: 0 0 20px rgba(251, 146, 60, 0.3);
+      }
+
+      50% {
+        box-shadow: 0 0 40px rgba(251, 146, 60, 0.6);
+      }
+    }
+
+    .slide-up {
+      animation: slide-up 0.6s ease-out;
+    }
+
+    .role-card {
+      transition: all 0.3s ease;
+      cursor: pointer;
+      background: white;
+    }
+
+    .role-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(251, 146, 60, 0.15);
+    }
+
+    .role-card.selected {
+      border-color: #fb923c;
+      background: linear-gradient(135deg, #fed7aa, #ffedd5);
+      box-shadow: 0 0 30px rgba(251, 146, 60, 0.4);
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #fb923c, #ea580c);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .input-field {
+      transition: all 0.3s ease;
+      border-color: #fed7aa;
+    }
+
+    .input-field:focus {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(251, 146, 60, 0.2);
+      border-color: #fb923c;
+      outline: none;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #fb923c, #ea580c);
+      transition: all 0.3s ease;
+    }
+
+    .btn-primary:hover {
+      background: linear-gradient(135deg, #ea580c, #dc2626);
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+
+<body class="min-h-screen flex items-center justify-center text-gray-900 p-4">
+
+  <div class="container mx-auto max-w-4xl">
+
+    <!-- Header -->
+    <div class="text-center mb-10 slide-up">
+      <div class="inline-flex items-center justify-center w-16 h-16 bg-orange-500 rounded-full mb-4">
+        <i class="fas fa-handshake text-white text-2xl"></i>
+      </div>
+
+      <h1 class="text-4xl md:text-5xl font-bold mb-3">
+        <span class="gradient-text">Join VendorLink</span>
+      </h1>
+
+      <p class="text-lg text-gray-600">
+        Choose your role to get started with the right experience
+      </p>
+    </div>
+
+    <!-- Role Selection Cards -->
+    <div class="grid md:grid-cols-2 gap-8 mb-8">
+
+      <!-- Vendor Card -->
+      <div id="vendorCard" onclick="selectRole('vendor')"
+        class="role-card rounded-2xl shadow-xl p-8 border-2 border-transparent slide-up" style="animation-delay: 0.2s;">
+        <div class="text-center">
+          <div class="w-20 h-20 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
+            <i class="fas fa-user-tie text-white text-3xl"></i>
+          </div>
+
+          <h3 class="text-2xl font-bold mb-3">I'm a Vendor</h3>
+
+          <div class="text-left space-y-3 mb-6">
+            <div class="flex items-center text-gray-600">
+              <i class="fas fa-check-circle text-green-500 mr-3"></i>
+              <span>Find reliable suppliers</span>
+            </div>
+            <div class="flex items-center text-gray-600">
+              <i class="fas fa-check-circle text-green-500 mr-3"></i>
+              <span>Post requirements & get quotes</span>
+            </div>
+            <div class="flex items-center text-gray-600">
+              <i class="fas fa-check-circle text-green-500 mr-3"></i>
+              <span>Compare prices & quality</span>
+            </div>
+            <div class="flex items-center text-gray-600">
+              <i class="fas fa-check-circle text-green-500 mr-3"></i>
+              <span>Manage orders efficiently</span>
+            </div>
+          </div>
+
+          <div class="bg-blue-50 rounded-lg p-3">
+            <p class="text-sm font-semibold text-blue-700">
+              Perfect for: Manufacturers, Construction Companies, Retailers
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Supplier Card -->
+      <div id="supplierCard" onclick="selectRole('supplier')"
+        class="role-card rounded-2xl shadow-xl p-8 border-2 border-transparent slide-up" style="animation-delay: 0.4s;">
+        <div class="text-center">
+          <div class="w-20 h-20 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
+            <i class="fas fa-industry text-white text-3xl"></i>
+          </div>
+
+          <h3 class="text-2xl font-bold mb-3">I'm a Supplier</h3>
+
+          <div class="text-left space-y-3 mb-6">
+            <div class="flex items-center text-gray-600">
+              <i class="fas fa-check-circle text-green-500 mr-3"></i>
+              <span>Find vendor requirements</span>
+            </div>
+            <div class="flex items-center text-gray-600">
+              <i class="fas fa-check-circle text-green-500 mr-3"></i>
+              <span>Showcase your products</span>
+            </div>
+            <div class="flex items-center text-gray-600">
+              <i class="fas fa-check-circle text-green-500 mr-3"></i>
+              <span>Send competitive proposals</span>
+            </div>
+            <div class="flex items-center text-gray-600">
+              <i class="fas fa-check-circle text-green-500 mr-3"></i>
+              <span>Grow your business</span>
+            </div>
+          </div>
+
+          <div class="bg-green-50 rounded-lg p-3">
+            <p class="text-sm font-semibold text-green-700">
+              Perfect for: Raw Material Suppliers, Distributors, Wholesalers
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Registration Form (Hidden by default) -->
+    <div id="registrationForm" class="hidden">
+      <div class="bg-white rounded-2xl shadow-xl p-8 slide-up">
+        <h3 class="text-2xl font-bold mb-6 text-center">Complete Your Profile</h3>
+
+        <!-- Progress Indicator -->
+        <div class="mb-6">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-sm font-semibold text-gray-700">Profile Completion</span>
+            <span id="progressPercentage" class="text-lg font-bold text-orange-600">0%</span>
+          </div>
+          <div class="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
+            <div id="progressBar" class="bg-gradient-to-r from-amber-500 to-orange-600 h-3 rounded-full transition-all duration-300 ease-out" style="width: 0%"></div>
+          </div>
+        </div>
+
+        <form onsubmit="completeRegistration(event)" class="space-y-4">
+          <div class="grid md:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-sm font-medium mb-2">Full Name</label>
+              <input type="text" id="fullName" required
+                class="input-field w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-orange-400">
+            </div>
+
+            <div>
+              <label class="block text-sm font-medium mb-2">Email</label>
+              <input type="email" id="email" required
+                class="input-field w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-orange-400">
+            </div>
+
+            <div>
+              <label class="block text-sm font-medium mb-2">Phone Number</label>
+              <input type="tel" id="phoneNumber" required pattern="[0-9]{10}"
+                class="input-field w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-orange-400">
+            </div>
+
+            <div>
+              <label class="block text-sm font-medium mb-2">Company Name</label>
+              <input type="text" id="companyName" required
+                class="input-field w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-orange-400">
+            </div>
+
+            <div>
+              <label class="block text-sm font-medium mb-2">Password</label>
+              <input type="password" id="password" required minlength="6"
+                class="input-field w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-orange-400">
+            </div>
+
+            <div>
+              <label class="block text-sm font-medium mb-2">Location</label>
+              <input type="text" id="location" required
+                class="input-field w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-orange-400">
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-sm font-medium mb-2">Business Type</label>
+            <select id="businessType" required
+              class="input-field w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-orange-400">
+              <option value="">Select Business Type</option>
+              <option value="manufacturer">Manufacturer</option>
+              <option value="distributor">Distributor</option>
+              <option value="retailer">Retailer</option>
+              <option value="wholesaler">Wholesaler</option>
+              <option value="trader">Trader</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <div class="flex items-center">
+            <input type="checkbox" id="terms" required class="mr-2">
+            <label for="terms" class="text-sm text-gray-600">
+              I agree to the Terms of Service and Privacy Policy
+            </label>
+          </div>
+
+          <button type="submit" class="btn-primary w-full text-white py-3 px-6 rounded-lg font-semibold">
+            Get Started
+            <i class="fas fa-arrow-right ml-2"></i>
+          </button>
+        </form>
+
+        <div class="text-center mt-4">
+          <button onclick="resetRoleSelection()" class="text-gray-500 hover:text-orange-600 text-sm">
+            ← Back to role selection
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Continue Button (Shown after role selection) -->
+    <div id="continueButton" class="hidden text-center">
+      <button onclick="showRegistrationForm()"
+        class="btn-primary text-white py-4 px-8 rounded-lg font-semibold text-lg">
+        Continue as <span id="selectedRoleText"></span>
+        <i class="fas fa-arrow-right ml-2"></i>
+      </button>
+
+      <div class="mt-4">
+        <button onclick="resetRoleSelection()" class="text-gray-500 hover:text-orange-600">
+          ← Choose different role
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    let selectedRole = '';
+
+    // Check if role was pre-selected from index.html
+    document.addEventListener('DOMContentLoaded', () => {
+      const preSelectedRole = localStorage.getItem('selectedRole');
+      if (preSelectedRole) {
+        selectRole(preSelectedRole);
+        localStorage.removeItem('selectedRole'); // Clean up
+      }
+    });
+
+    function selectRole(role) {
+      selectedRole = role;
+
+      // Update card styles
+      document.getElementById('vendorCard').classList.remove('selected');
+      document.getElementById('supplierCard').classList.remove('selected');
+
+      if (role === 'vendor') {
+        document.getElementById('vendorCard').classList.add('selected');
+        document.getElementById('selectedRoleText').textContent = 'Vendor';
+      } else {
+        document.getElementById('supplierCard').classList.add('selected');
+        document.getElementById('selectedRoleText').textContent = 'Supplier';
+      }
+
+      // Show continue button
+      document.getElementById('continueButton').classList.remove('hidden');
+      document.getElementById('continueButton').classList.add('slide-up');
+    }
+
+    function showRegistrationForm() {
+      document.getElementById('continueButton').classList.add('hidden');
+      document.getElementById('registrationForm').classList.remove('hidden');
+      document.getElementById('registrationForm').classList.add('slide-up');
+      
+      // Initialize progress tracking when form is shown
+      initializeProgressTracking();
+    }
+
+    function resetRoleSelection() {
+      selectedRole = '';
+      document.getElementById('vendorCard').classList.remove('selected');
+      document.getElementById('supplierCard').classList.remove('selected');
+      document.getElementById('continueButton').classList.add('hidden');
+      document.getElementById('registrationForm').classList.add('hidden');
+    }
+
+    // Progress Tracking Functions
+    function initializeProgressTracking() {
+      const formFields = ['fullName', 'email', 'phoneNumber', 'companyName', 'password', 'location', 'businessType', 'terms'];
+      
+      formFields.forEach(fieldId => {
+        const field = document.getElementById(fieldId);
+        if (field) {
+          if (fieldId === 'terms') {
+            field.addEventListener('change', updateProgress);
+          } else {
+            field.addEventListener('input', updateProgress);
+            field.addEventListener('change', updateProgress);
+          }
+        }
+      });
+      
+      // Initialize progress on first load
+      updateProgress();
+    }
+
+    function updateProgress() {
+      const totalFields = 8; // Total number of fields
+      const fieldIds = ['fullName', 'email', 'phoneNumber', 'companyName', 'password', 'location', 'businessType', 'terms'];
+      
+      let filledFields = 0;
+
+      fieldIds.forEach(fieldId => {
+        const field = document.getElementById(fieldId);
+        if (field) {
+          if (fieldId === 'terms') {
+            // For checkbox field
+            if (field.checked) {
+              filledFields++;
+            }
+          } else {
+            // For text input fields
+            if (field.value.trim() !== '') {
+              filledFields++;
+            }
+          }
+        }
+      });
+
+      // Calculate percentage
+      const percentage = Math.round((filledFields / totalFields) * 100);
+
+      // Update progress bar
+      const progressBar = document.getElementById('progressBar');
+      const progressPercentage = document.getElementById('progressPercentage');
+      
+      if (progressBar && progressPercentage) {
+        progressBar.style.width = percentage + '%';
+        progressPercentage.textContent = percentage + '%';
+        
+        // Change color based on progress
+        if (percentage < 33) {
+          progressBar.className = 'bg-gradient-to-r from-red-500 to-orange-500 h-3 rounded-full transition-all duration-300 ease-out';
+        } else if (percentage < 66) {
+          progressBar.className = 'bg-gradient-to-r from-yellow-500 to-amber-500 h-3 rounded-full transition-all duration-300 ease-out';
+        } else if (percentage < 100) {
+          progressBar.className = 'bg-gradient-to-r from-amber-500 to-orange-600 h-3 rounded-full transition-all duration-300 ease-out';
+        } else {
+          progressBar.className = 'bg-gradient-to-r from-green-500 to-emerald-600 h-3 rounded-full transition-all duration-300 ease-out';
+        }
+      }
+    }
+
+    async function completeRegistration(event) {
+      event.preventDefault();
+
+      const fullName = document.getElementById('fullName').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value;
+      const phoneNumber = document.getElementById('phoneNumber').value.trim();
+      const companyName = document.getElementById('companyName').value.trim();
+      const location = document.getElementById('location').value.trim();
+
+      // Prepare payload for MongoDB
+      const payload = {
+        name: fullName,
+        email: email,
+        password: password,
+        role: selectedRole,
+      };
+
+      // If vendor role, add vendor-specific fields
+      if (selectedRole === 'vendor') {
+        payload.vendorName = companyName;
+        payload.location = location;
+        payload.contact = phoneNumber;
+        payload.category = document.getElementById('businessType').value;
+      }
+
+      try {
+        // Send to backend API (MongoDB)
+        const response = await fetch('/api/auth/signup', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(payload)
+        });
+
+        const result = await response.json();
+
+        if (!response.ok) {
+          throw new Error(result.message || result.error || 'Registration failed');
+        }
+
+        console.log('✅ User registered in MongoDB:', result.user);
+
+        // Store user in localStorage for frontend use
+        const userForStorage = {
+          _id: result.user._id,
+          name: result.user.name,
+          email: result.user.email,
+          role: result.user.role
+        };
+        localStorage.setItem('user', JSON.stringify(userForStorage));
+
+        // Show success message
+        const successDiv = document.createElement('div');
+        successDiv.className = 'fixed top-4 right-4 bg-green-500 text-white px-6 py-4 rounded-lg shadow-lg z-50 flex items-center space-x-3 slide-up';
+        successDiv.innerHTML = `
+          <i class="fas fa-check-circle text-2xl"></i>
+          <div>
+            <div class="font-bold">Registration Successful!</div>
+            <div class="text-sm">Welcome to VendorLink, ${fullName}!</div>
+          </div>
+        `;
+        document.body.appendChild(successDiv);
+
+        // Redirect to login page after 2 seconds
+        setTimeout(() => {
+          window.location.href = 'login.html';
+        }, 2000);
+
+      } catch (error) {
+        console.error('❌ Registration error:', error);
+        
+        // Show error message
+        const errorDiv = document.createElement('div');
+        errorDiv.className = 'fixed top-4 right-4 bg-red-500 text-white px-6 py-4 rounded-lg shadow-lg z-50 flex items-center space-x-3 slide-up';
+        errorDiv.innerHTML = `
+          <i class="fas fa-exclamation-circle text-2xl"></i>
+          <div>
+            <div class="font-bold">Registration Failed!</div>
+            <div class="text-sm">${error.message}</div>
+          </div>
+        `;
+        document.body.appendChild(errorDiv);
+
+        // Remove error message after 5 seconds
+        setTimeout(() => {
+          errorDiv.remove();
+        }, 5000);
+      }
+    }
+  </script>
+
+</body>
+
+</html>

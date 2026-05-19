@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Street Food Price Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🍲 Street Food Price Predictor</h1>
+            <p class="subtitle">Predict raw material prices across India</p>
+        </header>
+
+        <main>
+            <div class="form-container">
+                <h2>Select Your Parameters</h2>
+                
+                <form id="predictionForm">
+                    <div class="form-group">
+                        <label for="product">Product</label>
+                        <select id="product" required>
+                            <option value="">Choose a product...</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="season">Season</label>
+                        <select id="season" required>
+                            <option value="">Choose a season...</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="location">Location</label>
+                        <select id="location" required>
+                            <option value="">Choose a location...</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn-predict">Predict Price</button>
+                </form>
+
+                <div id="errorMessage" class="error-message"></div>
+            </div>
+
+            <div id="resultContainer" class="result-container hidden">
+                <h2>Price Prediction Result</h2>
+                
+                <div class="result-info">
+                    <div class="info-item">
+                        <span class="label">Product:</span>
+                        <span id="resultProduct" class="value"></span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">Season:</span>
+                        <span id="resultSeason" class="value"></span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">Location:</span>
+                        <span id="resultLocation" class="value"></span>
+                    </div>
+                </div>
+
+                <div class="price-display">
+                    <div class="price-box predicted">
+                        <h3>Predicted Price</h3>
+                        <div class="price-value">₹<span id="predictedPrice"></span></div>
+                    </div>
+                    
+                    <div id="actualAvgBox" class="price-box actual hidden">
+                        <h3>Actual Average</h3>
+                        <div class="price-value">₹<span id="actualPrice"></span></div>
+                        <div class="difference" id="difference"></div>
+                    </div>
+                </div>
+
+                <button type="button" class="btn-back" onclick="resetForm()">← Make Another Prediction</button>
+            </div>
+        </main>
+
+        <footer>
+            <p>ML-powered price prediction model • Trained on street food commodity data</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

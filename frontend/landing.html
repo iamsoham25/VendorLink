@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-gradient-to-br from-amber-50 to-orange-100 dark:from-gray-900 dark:to-gray-800">
+<head>
+  <meta charset="UTF-8">
+  <title>VendorLink - Connecting Vendors & Suppliers</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+    
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 20px rgba(251, 191, 36, 0.5); }
+      50% { box-shadow: 0 0 40px rgba(251, 191, 36, 0.8); }
+    }
+    
+    @keyframes slide-in-left {
+      from { transform: translateX(-100px); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+    
+    @keyframes slide-in-right {
+      from { transform: translateX(100px); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+    
+    @keyframes connect-line {
+      0% { width: 0%; }
+      50% { width: 100%; }
+      100% { width: 0%; }
+    }
+    
+    .float-animation {
+      animation: float 3s ease-in-out infinite;
+    }
+    
+    .pulse-glow {
+      animation: pulse-glow 2s ease-in-out infinite;
+    }
+    
+    .slide-in-left {
+      animation: slide-in-left 1s ease-out;
+    }
+    
+    .slide-in-right {
+      animation: slide-in-right 1s ease-out;
+    }
+    
+    .connect-line {
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .connect-line::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #fbbf24, transparent);
+      animation: connect-line 3s ease-in-out infinite;
+    }
+    
+    .gradient-text {
+      background: linear-gradient(135deg, #f59e0b, #dc2626);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .loading-dots span {
+      animation: pulse 1.4s ease-in-out infinite both;
+    }
+    
+    .loading-dots span:nth-child(1) { animation-delay: -0.32s; }
+    .loading-dots span:nth-child(2) { animation-delay: -0.16s; }
+    
+    @keyframes pulse {
+      0%, 80%, 100% { opacity: 0.3; }
+      40% { opacity: 1; }
+    }
+  </style>
+</head>
+
+<body class="min-h-screen flex items-center justify-center text-gray-900 dark:text-gray-100">
+  
+  <!-- Main Container -->
+  <div class="container mx-auto px-4 max-w-6xl">
+    
+    <!-- Hero Section -->
+    <div class="text-center mb-12 slide-in-left">
+      <div class="inline-flex items-center justify-center w-20 h-20 bg-amber-500 rounded-full mb-6 pulse-glow">
+        <i class="fas fa-handshake text-white text-3xl"></i>
+      </div>
+      
+      <h1 class="text-5xl md:text-7xl font-bold mb-4">
+        <span class="gradient-text">VendorLink</span>
+      </h1>
+      
+      <p class="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-2">
+        Connecting Vendors & Suppliers
+      </p>
+      
+      <p class="text-lg text-gray-500 dark:text-gray-400">
+        Finding the Perfect Match for Your Business Needs
+      </p>
+    </div>
+    
+    <!-- Interactive Showcase -->
+    <div class="grid md:grid-cols-3 gap-8 items-center mb-12">
+      
+      <!-- Vendor Card -->
+      <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 text-center float-animation slide-in-left">
+        <div class="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
+          <i class="fas fa-user-tie text-white text-2xl"></i>
+        </div>
+        <h3 class="text-xl font-bold mb-2">Vendor</h3>
+        <p class="text-gray-600 dark:text-gray-300 text-sm">
+          Need raw materials for your business?
+        </p>
+        <div class="mt-4 text-amber-500">
+          <i class="fas fa-search"></i>
+        </div>
+      </div>
+      
+      <!-- Connection -->
+      <div class="text-center connect-line py-8">
+        <div class="inline-flex items-center justify-center w-12 h-12 bg-amber-500 rounded-full">
+          <i class="fas fa-exchange-alt text-white"></i>
+        </div>
+        <p class="text-sm text-gray-500 mt-2">Connect</p>
+      </div>
+      
+      <!-- Supplier Card -->
+      <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 text-center float-animation slide-in-right" style="animation-delay: 0.5s;">
+        <div class="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
+          <i class="fas fa-industry text-white text-2xl"></i>
+        </div>
+        <h3 class="text-xl font-bold mb-2">Supplier</h3>
+        <p class="text-gray-600 dark:text-gray-300 text-sm">
+          Supply quality raw materials?
+        </p>
+        <div class="mt-4 text-amber-500">
+          <i class="fas fa-chart-line"></i>
+        </div>
+      </div>
+      
+    </div>
+    
+    <!-- Features -->
+    <div class="grid md:grid-cols-4 gap-6 mb-12">
+      <div class="text-center slide-in-left" style="animation-delay: 0.2s;">
+        <div class="w-12 h-12 bg-amber-100 dark:bg-amber-900 rounded-full flex items-center justify-center mx-auto mb-3">
+          <i class="fas fa-bolt text-amber-600"></i>
+        </div>
+        <p class="text-sm font-semibold">Fast Matching</p>
+      </div>
+      
+      <div class="text-center slide-in-left" style="animation-delay: 0.4s;">
+        <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center mx-auto mb-3">
+          <i class="fas fa-shield-alt text-blue-600"></i>
+        </div>
+        <p class="text-sm font-semibold">Verified Partners</p>
+      </div>
+      
+      <div class="text-center slide-in-right" style="animation-delay: 0.6s;">
+        <div class="w-12 h-12 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center mx-auto mb-3">
+          <i class="fas fa-dollar-sign text-green-600"></i>
+        </div>
+        <p class="text-sm font-semibold">Best Prices</p>
+      </div>
+      
+      <div class="text-center slide-in-right" style="animation-delay: 0.8s;">
+        <div class="w-12 h-12 bg-purple-100 dark:bg-purple-900 rounded-full flex items-center justify-center mx-auto mb-3">
+          <i class="fas fa-truck text-purple-600"></i>
+        </div>
+        <p class="text-sm font-semibold">Quick Delivery</p>
+      </div>
+    </div>
+    
+    <!-- Loading Section -->
+    <div class="text-center">
+      <div class="inline-flex items-center space-x-2 text-amber-600">
+        <div class="loading-dots flex space-x-1">
+          <span class="w-2 h-2 bg-amber-600 rounded-full"></span>
+          <span class="w-2 h-2 bg-amber-600 rounded-full"></span>
+          <span class="w-2 h-2 bg-amber-600 rounded-full"></span>
+        </div>
+        <span class="text-lg font-medium" id="loadingText">Preparing your experience</span>
+      </div>
+      
+      <!-- Progress Bar -->
+      <div class="w-64 mx-auto mt-4 bg-gray-200 dark:bg-gray-700 rounded-full h-2 overflow-hidden">
+        <div id="progressBar" class="bg-gradient-to-r from-amber-500 to-orange-500 h-full rounded-full transition-all duration-1000 ease-out" style="width: 0%"></div>
+      </div>
+      
+      <!-- Skip Button -->
+      <button onclick="skipToRoleSelection()" class="mt-6 text-gray-500 hover:text-amber-600 transition-colors text-sm underline">
+        Skip to role selection →
+      </button>
+    </div>
+    
+  </div>
+  
+  <!-- Background Decorations -->
+  <div class="fixed top-10 left-10 w-20 h-20 bg-amber-200 dark:bg-amber-900 rounded-full opacity-20 float-animation"></div>
+  <div class="fixed bottom-10 right-10 w-32 h-32 bg-blue-200 dark:bg-blue-900 rounded-full opacity-20 float-animation" style="animation-delay: 1s;"></div>
+  <div class="fixed top-1/2 right-20 w-16 h-16 bg-green-200 dark:bg-green-900 rounded-full opacity-20 float-animation" style="animation-delay: 2s;"></div>
+  
+  <script>
+    let progress = 0;
+    const progressBar = document.getElementById('progressBar');
+    const dynamicText = document.getElementById('dynamicText');
+    const messages = [
+      "Connecting vendors with suppliers...",
+      "Building business relationships...",
+      "Streamlining procurement...",
+      "Empowering B2B commerce..."
+    ];
+    let messageIndex = 0;
+
+    // Animate progress bar and text for visual effect only
+    const progressInterval = setInterval(() => {
+      progress += 2;
+      progressBar.style.width = progress + '%';
+      
+      // Change message every 25%
+      if (progress % 25 === 0 && messageIndex < messages.length - 1) {
+        messageIndex++;
+        dynamicText.style.opacity = '0';
+        setTimeout(() => {
+          dynamicText.textContent = messages[messageIndex];
+          dynamicText.style.opacity = '1';
+        }, 300);
+      }
+      
+      if (progress >= 100) {
+        clearInterval(progressInterval);
+        // Reset animation after completion for continuous effect
+        setTimeout(() => {
+          progress = 0;
+          messageIndex = 0;
+          dynamicText.textContent = messages[0];
+          progressBar.style.width = '0%';
+          // Restart animation
+          progressInterval;
+        }, 2000);
+      }
+    }, 100);
+
+    // Skip button functionality
+    document.getElementById('skipButton').addEventListener('click', () => {
+      window.location.href = 'marketplace.html';
+    });
+
+    // Get Started button
+    document.getElementById('getStartedButton').addEventListener('click', () => {
+      window.location.href = 'marketplace.html';
+    });
+    setTimeout(() => {
+      if (progress < 100) {
+        clearInterval(progressInterval);
+        progressBar.style.width = '100%';
+        setTimeout(() => {
+          window.location.href = 'role-selection.html';
+        }, 300);
+      }
+    }, 5000);
+  </script>
+  
+</body>
+</html>

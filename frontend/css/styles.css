@@ -1,0 +1,85 @@
+/* Smooth transitions across the whole UI */
+* {
+  transition: all 0.25s ease;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 7px;
+}
+::-webkit-scrollbar-thumb {
+  background: #b47f00;
+  border-radius: 10px;
+}
+
+
+  .nav-link {
+    color: #444;
+    text-decoration: none;
+  }
+  .nav-link:hover {
+    color: #d97706;
+  }
+  .dark .nav-link {
+    color: #ddd;
+  }
+
+  .btn-outline {
+    padding: 6px 14px;
+    border: 1px solid #d97706;
+    color: #d97706;
+    border-radius: 8px;
+  }
+  .btn-outline:hover {
+    background: #fff7e6;
+  }
+
+  .btn-filled {
+    background: #d97706;
+    color: white;
+    padding: 6px 14px;
+    border-radius: 8px;
+  }
+  .btn-filled:hover {
+    background: #b45309;
+  }
+
+  .profile-btn {
+    padding: 6px 14px;
+    background: #f3f4f6;
+    border-radius: 8px;
+  }
+  .dark .profile-btn {
+    background: #374151;
+  }
+
+  .dropdown-item {
+    padding: 10px 15px;
+    display: block;
+    text-align: left;
+    font-size: 0.9rem;
+    color: #4b5563;
+  }
+  .dropdown-item:hover {
+    background: #f5f5f5;
+  }
+  .dark .dropdown-item {
+    color: #e5e7eb;
+  }
+
+  .toggle-checkbox {
+    width: 40px;
+    height: 20px;
+    accent-color: #d97706;
+  }
+
+  .theme-btn {
+    padding: 6px;
+    background: #e5e7eb;
+    border-radius: 6px;
+  }
+  .dark .theme-btn {
+    background: #4b5563;
+  }
+
+
